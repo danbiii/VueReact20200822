@@ -67,7 +67,7 @@
 </script>
 <script>
     // Vue를 이용하여 #app 의 {{msg}} 부분에 "Hello" 를 출력하라. 
-    new Vue({
+    var vm1 = new Vue({
         el: "#app",
         data: {
             msg: "Hello",
@@ -98,6 +98,8 @@
             div.innerHTML = val;
         }
     });
+
+    debugger;
     data.msg = "123";
     data["msg"] = "abc";
 </script>
