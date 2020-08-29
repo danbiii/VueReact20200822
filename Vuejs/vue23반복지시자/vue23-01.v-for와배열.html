@@ -40,7 +40,7 @@
         var objarray = [
             { text: 'One', value: 'A' },
             { text: 'Two', value: 'B' },
-            { text: 'Three', value: 'C' }
+            { text: 'Three', value: 'C' },
         ];
 
         [참조]page 104
@@ -65,6 +65,13 @@
     <div id="app1">
         <div>
             <h2>Object Arrary rendered with v-for:</h2>
+            <p>
+                var objarray = [
+                    { text: 'One', value: 'A' },
+                    { text: 'Two', value: 'B' },
+                    { text: 'Three', value: 'C' },
+                ];
+            </p>
             <select name="" id="">
                 <option v-for="option in options" v-bind:key="value">
                     {{ option.text }} : {{ option.value}}
@@ -78,3 +85,37 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>    
+    new Vue({
+        /* e dt mc^2 w */
+        el: "#app",
+        data : {
+            systems : ["android", "ios", "window"],
+            arr : [1,2,3,4,5],
+        },
+        template: null, 
+        methods: {},
+        components: {},
+        computed: {},
+        watch: {},
+    }); 
+
+    new Vue({
+        /* e dt mc^2 w */
+        el: "#app1",
+        data: { 
+            options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' },
+            ],
+        },
+        template: null, 
+        methods: {},
+        components: {},
+        computed: {},
+        watch: {},
+    });
+
+</script>

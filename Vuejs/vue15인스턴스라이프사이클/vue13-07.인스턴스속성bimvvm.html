@@ -40,7 +40,7 @@
     var vm = new Vue({
         el: "#my",
         data: {
-            message: "change message at mounted!!!",
+            message: "aaa",
         },
         methods: {
             doClick: function (e) {
@@ -48,7 +48,12 @@
 
                 this.$data.message = "change message " + timeCurrent;
             },
-        }
+        },
+        mounted: function (e) {
+            console.log("mounted");
+            this.$data.message = "change message at mounted!!!";
+            // Vue.set(this.$data, "message", "change message at mounted!!!");
+        },
     });
 
     window.setTimeout(function(){

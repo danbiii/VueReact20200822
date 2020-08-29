@@ -37,3 +37,40 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>    
+    new Vue({
+        /* e dt mc^2 w */
+        el: "#app1",
+        data: { 
+            num: 0,
+        },
+        template: null, 
+        methods: {
+            clickBtn: function(event){
+                console.log(event); // 태그 정보
+                this.$data.num = this.$data.num + 1;
+            }
+        },
+        components: {},
+        computed: {},
+        watch: {},
+    }); 
+    new Vue({
+        /* e dt mc^2 w */
+        el: "#app2",
+        data: { 
+            num: 0,
+        },
+        template: null, 
+        methods: {
+            clickBtn: function(event){
+                console.log(event); // 10 
+                this.$data.num = this.$data.num + event;
+            },
+        },
+        components: {},
+        computed: {},
+        watch: {},
+    }); 
+</script>  

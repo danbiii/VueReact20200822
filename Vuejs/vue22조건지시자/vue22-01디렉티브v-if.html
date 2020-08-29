@@ -75,9 +75,9 @@
         <span v-if="awesome">
             Now you see me
         </span>
-        <span v-else>
+        <div v-else>
             Now you don't
-        </span>
+        </div>
     </div>
 
     <h2>v-if/v-else-if/v-else 연습 4 : 실습</h2>
@@ -100,3 +100,71 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* e dt mc^2 w */
+        el: "#app1",
+        data: {
+            awesome: true,
+        },
+        template: null, 
+        methods: {},
+        components: {},
+        computed: {},
+        watch: {},
+    });
+    new Vue({
+        /* e dt mc^2 w */
+        el: "#app2",
+        data: {
+            awesome: false,
+        },
+        template: null, 
+        methods: {},
+        components: {},
+        computed: {},
+        watch: {},
+    });
+    new Vue({
+        /* e dt mc^2 w */
+        el: "#app3",
+        data: {
+            awesome: false,
+        },
+        template: null, 
+        methods: {
+            clickBind: function(event) {
+                // 클릭하면 awesome : true ==>  awesome : false
+                // 클릭하면 awesome : false ==>  awesome : true
+                this.$data.awesome = !this.$data.awesome; // 토글 기능 구현.
+            },
+        },
+        components: {},
+        computed: {},
+        watch: {},
+    });
+
+    new Vue({
+        /* e dt mc^2 w */
+        el: "#app5",
+        data: {
+            type: 0,
+        },
+        template: null, 
+        methods: {
+            clickBind: function(event) {
+                this.$data.type = this.$data.type + 1;
+                // if 초기화 방식
+                if (this.$data.type === 4) {
+                    this.$data.type = 0
+                }
+                // 나머지 연산자 방식 : Return a number between 0 and 3:
+                //this.$data.type = this.$data.type % 4;
+            },
+        },
+        components: {},
+        computed: {},
+        watch: {},
+    });
+</script>

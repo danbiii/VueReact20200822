@@ -48,7 +48,7 @@
     <hr>
 
     <div id="app">
-        <input v-model="message">
+        <input v-model:value="message">
         <button v-on:click="reverseMsg">문자열 역순</button>
         <p> </p>
         <p>methods 속성을 이용한 수동 반영: <span>{{ methodscopy }}</span></p>
@@ -60,3 +60,30 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    /* data 프로퍼티에 설정된 변수: {{ }}, v-model, v-bind */
+    new Vue({
+        /* e dt mc^2 w */
+        el: "#app",
+        data: {
+            message: "Hello, Vue.js",
+            methodscopy: "",
+            //watchcopy: "",
+            //computedcopy: "",
+        },
+        methods: {
+            reverseMsg : function(event) {
+                console.log('reverseMsg');
+                this.$data.methodscopy = this.$data.message;
+            }
+        },
+        computed: {
+            computedcopy: function() {
+                return this.$data.message;
+             },
+        },
+        watch: {
+        },
+    });
+</script>
