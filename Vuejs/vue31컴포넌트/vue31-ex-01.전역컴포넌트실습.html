@@ -65,23 +65,58 @@
 </head>
 
 <body>
-    <header>
-        Header
-    </header>
-    <div id="content">
-        <p>Content</p>
-        <aside>
-            Aside
-        </aside>
-        <div id="content-list">
-            List
-        </div>
+    <div id="app">
+        <header-componet></header-componet>
+        <content-componet></content-componet>
+        <footer-componet></footer-componet>
     </div>
-    <footer>
-        Footer
-    </footer>
 </body>
 
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script> 
+
+    Vue.component("header-componet",{
+        template:`
+        <header>
+            Header
+        </header>
+        `,
+    })
+    Vue.component("aside-component", {
+        template:`
+            <aside>
+                Aside
+            </aside>
+        `
+    })
+    Vue.component("content-list-component", {
+        template:`
+            <div id="content-list">
+                List
+            </div>
+        `
+    })
+    Vue.component("content-componet",{
+        template:`
+        <div id="content">
+            <p>Content</p>
+            <aside-component></aside-component>
+            <content-list-component></content-list-component>
+        </div>
+        `,
+    })
+    Vue.component("footer-componet",{
+        template:`
+        <footer>
+            Footer
+        </footer>
+        `,
+    })
+    new Vue({
+        el:"#app",
+        data: {},
+    })
+</script>
