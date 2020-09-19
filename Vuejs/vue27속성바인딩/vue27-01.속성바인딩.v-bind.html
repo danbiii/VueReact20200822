@@ -79,3 +79,39 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script> 
+    new Vue({
+        el:"#app1",
+        data : {
+            idA: null,
+            classA: null,
+            styleA: null, 
+            message : null, 
+            imagePath : null,
+        },
+        methods: {
+            clickBindId : function(event){
+                console.log("clickBindId");
+                this.$data.idA = "aora";
+            },
+            clickBindClass : function(event){
+                console.log("clickBindClass");
+                this.$data.classA = "container";
+            },
+            clickBindStyle : function(event){
+                console.log("clickBindStyle");
+                this.$data.styleA = "color:blue; font-size:20pt;";
+            },
+            clickBindValue : function(event){
+                console.log("clickBindValue");
+                this.$data.message = "v-bind value";
+            },
+            clickBindSrc : function(event){
+                console.log("clickBindSrc");
+                this.$data.imagePath = "../images/heart.png";
+            },
+        }
+    })
+
+</script>

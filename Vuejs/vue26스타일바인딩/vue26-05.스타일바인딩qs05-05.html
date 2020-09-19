@@ -54,6 +54,7 @@
         도전1. Vue.js 를 사용한 style single 바인딩 복습. v-bind:style 객체 사용<br>
         <button id="btn1" v-bind:style="myColor">버튼1</button>
     </div>
+
     <div id="example2">
         도전2. Vue.js 를 사용한 style multi 바인딩 구현. v-bind:style에 배열 사용<br>
 		
@@ -112,3 +113,61 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        el: "#example1",
+        data: {
+            myColor: {
+                backgroundColor: "aqua",
+                color: "purple",
+            }
+        }
+    });
+
+    new Vue({
+        el: "#example2",
+        data : {
+            /*             
+            myColor {                
+                background-color: aqua;
+                color: purple;
+            }
+            myLayout {
+                width: 150px;
+                height: 80px;
+                text-align: center;
+            }
+            */
+            myColor: {
+                backgroundColor: "aqua",
+                color: "purple",
+            },
+            myLayout: {
+                width: "150px",
+                height: "80px",
+                textAlign: "center",
+            },
+        },
+    });
+    
+    new Vue({
+        el:"#example3",
+        data : {
+            mystyle : {
+                set1: {
+                    backgroundColor: "aqua",
+                    color: "purple",
+                },
+                set2: {
+                    textalign: "center",
+                    width: "120px",
+                },
+                set3: {
+                    border: "sandybrown dashed 5px"
+                },
+            }
+        }
+    })
+
+</script>

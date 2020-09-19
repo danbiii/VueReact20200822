@@ -49,3 +49,29 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>    
+    new Vue({
+        el: "#app",
+        data: {
+            state : "ready",
+            msg: "ready",
+        },
+        methods : {
+            change: function(event){
+                console.log(this.$data.state);
+                if( this.$data.state === "ready") {
+                    this.$data.state = "active";
+                }
+                else if( this.$data.state === "active") {
+                    this.$data.state = "done";
+                }
+                else if( this.$data.state === "done") {
+                    this.$data.state = "ready";
+                }
+
+                this.$data.msg = this.$data.state;
+            }
+        }
+    })
+</script>
