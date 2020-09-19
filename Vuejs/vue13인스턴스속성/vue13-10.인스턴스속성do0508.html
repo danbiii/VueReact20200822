@@ -72,12 +72,14 @@
             //watchcopy: "",
             //computedcopy: "",
         },
+        template: null,
         methods: {
             reverseMsg : function(event) {
                 console.log('reverseMsg');
                 this.$data.methodscopy = this.$data.message;
-            }
+            },
         },
+        components: null,
         computed: {
             computedcopy: function() {
                 return this.$data.message;
