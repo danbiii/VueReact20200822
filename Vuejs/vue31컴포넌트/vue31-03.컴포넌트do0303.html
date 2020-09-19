@@ -32,7 +32,7 @@
         padding:3px;
 
         [참조]
-        교재 page 52~61, 65
+        교재 page 53,55,65
         https://kr.vuejs.org/v2/guide/components.html
     </xmp>
     <hr>
@@ -40,15 +40,70 @@
     <div id="app">
         <h2>컴포넌트 등록</h2>
 
-        <global-component v-bind:propsdata="globalmsg1"></global-component>
-        <global-component v-bind:propsdata="globalmsg2"></global-component>
+        <global-component v-bind:propsdata ="globalmsg1"></global-component>
+        <global-component v-bind:propsdata ="globalmsg2"></global-component>
         <hr>
-        <local-component v-bind:localmsg="localmsg1"></local-component>
-        <local-component v-bind:localmsg="localmsg2"></local-component>
+        <local-component v-bind:localmsg ="localmsg1"></local-component>
+        <local-component v-bind:localmsg ="localmsg2"></local-component>
     </div>
 
 </body>
 
 </html>
 
+
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script> 
+
+    // 전역 컴포넌트
+    Vue.component("global-component", {
+        // pdtmc^2w
+        props: ["propsdata"],
+        data: function(){ 
+            return {}
+        },
+        template: `
+            <div> 전역 컴포넌트 {{propsdata}}</div>
+        `,
+        methods: { },
+        components:{ },
+        computed: { },
+        watch: { },
+    });
+
+    // 지역 컴포넌트 만들기: 변수로 만든다.
+    var localComponent = {
+        // pdtmc^2w
+        props: ["localmsg"],
+        data: function(){ 
+            return {}
+        },
+        template: `
+            <div> 지역 컴포넌트 :: {{localmsg}} </div>
+        `,
+        methods: { },
+        components:{ },
+        computed: { },
+        watch: { },
+
+    }
+
+    new Vue({
+        /* edtmc^2w */
+        el:"#app",
+        data: {
+            globalmsg1: "전역 메세지 1",
+            globalmsg2: "전역 메세지 2",
+            localmsg1: "지역 메세지 1",
+            localmsg2: "지역 메세지 2",
+        },
+        template: null,
+        methods: { },
+        components:{
+            "local-component":localComponent,
+         },
+        computed: { },
+        watch: { },
+    })
+</script>
