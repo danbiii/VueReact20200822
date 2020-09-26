@@ -46,6 +46,10 @@
                    this.$store.commit("action명", payload) 을 사용하여 호출
        . state : 컴포넌트 간에 공유할 data
        . getter:
+
+    작업
+        {{header}} 에는 "Vuex 사용 앱" 가 나오게 
+        {{welcome}} 에는 "HELLO WORLD" 가 나오게 
     </pre>
     <hr>
     <div id="app">
@@ -58,6 +62,54 @@
 
 </html>
 
-<!-- vue 스크립트 플러그인 임포트 -->
+<!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script> 
+
+    var store = new Vuex.Store({
+        actions: {
+            increment: function(mutations, value ){
+                mutations.commit("increment"  , value);
+            }
+        },
+        mutations: {
+            increment: function(state, value ){
+                state.counter = state.counter + value; 
+            }
+        },
+        state: {
+            counter: 0,
+        },
+        getters: {
+            counter: function( state) {
+                return state.counter;
+            }
+        }
+    })
+
+
+    new Vue({
+        /* edtmc^2w */
+        el:"#app",
+        data: {
+            header : "Vuex 사용 앱", 
+            welcome : "HELLO WORLD", 
+            // counter : 0, 
+        },
+        methods: {
+            increment: function(event){
+                //this.$data.counter = this.$data.counter + 1;
+                store.dispatch("increment", 1);
+            },
+        },
+        commputed: {
+            counter: function(){
+                return store.getters.counter;
+            }
+        }
+    });
+
+</script>
 
 
