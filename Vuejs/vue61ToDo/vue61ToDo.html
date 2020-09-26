@@ -152,12 +152,12 @@
             └─ src
             │   └─ components   
             │       │   └─ todo 
-            │       │       └─ TodoHeader.vue  # component 파일 생성
-            │       │       └─ TodoInput.vue   # component 파일 생성
-            │       │       └─ TodoList.vue    # component 파일 생성
-            │       │       └─ TodoFooter.vue  # component 파일 생성
+            │       │       └─ TodoHeader.vue  # 파일 생성. Vue component에 해당됨  
+            │       │       └─ TodoInput.vue   # 파일 생성. Vue component에 해당됨  
+            │       │       └─ TodoList.vue    # 파일 생성. Vue component에 해당됨  
+            │       │       └─ TodoFooter.vue  # 파일 생성. Vue component에 해당됨  
             │       └─ views                    
-            │           └─ Todo.vue             # Vue 인스턴스에 해당되는 파일 생성
+            │           └─ Todo.vue             # 파일 생성. Vue 인스턴스에 해당됨
             ├─ babel.config.js
             ├─ package.json
             └─ README.md
@@ -194,37 +194,53 @@
                     <router-view />
                 </div>
 
+        7. 컴포넌트 1차 구현: style 과 html 추가
+            step 7-1. src/components/todo/TodoHeader.vue 에 style 과 html 추가
+                vue61ToDo/1차/TodoHeader.vue 내용을 복사하여 붙여넣기
+            
+            step 7-2. src/components/todo/TodoInput.vue  에 style 과 html 추가
+                vue61ToDo/1차/TodoInput.vue 내용을 복사하여 붙여넣기
+            
+            step 7-3. src/components/todo/TodoList.vue   에 style 과 html 추가
+                vue61ToDo/1차/TodoList.vue 내용을 복사하여 붙여넣기
+            
+            step 7-4. src/components/todo/TodoFooter.vue 에 style 과 html 추가
+                vue61ToDo/1차/TodoFooter.vue 내용을 복사하여 붙여넣기
+            
+            step 7-5. src/views/Todo.vue 에 style 과 html 추가
+                vue61ToDo/1차/Todo.vue 내용을 복사하여 붙여넣기
 
-        7. 컴포넌트 1차 구현
-            step 7-1. src/components/todo/TodoHeader.vue  구현
+
+        8. 컴포넌트 2차 구현: <script></script> 추가
+            step 8-1. src/components/todo/TodoHeader.vue  에 추가
             <script>
             export default {
                 /* pdtmc^2w */
             }
             </script> 
             
-            step 7-2. rc/components/todo/TodoInput.vue   구현
+            step 8-2. rc/components/todo/TodoInput.vue   에 추가
             <script>
             export default {
                 /* pdtmc^2w */
             }
             </script>
             
-            step 7-3. src/components/todo/TodoList.vue    구현
+            step 8-3. src/components/todo/TodoList.vue   에 추가
             <script>
             export default {
                 /* pdtmc^2w */
             }
             </script>
             
-            step 7-4. src/components/todo/TodoFooter.vue  구현
+            step 8-4. src/components/todo/TodoFooter.vue  에 추가
             <script>
             export default {
                 /* pdtmc^2w */
             }
             </script>
             
-            step 7-5. src/views/Todo.vue  구현
+            step 8-5. src/views/Todo.vue  에 추가
             <script>
             import TodoHeader from "@/components/todo/TodoHeader.vue";
             import TodoInput  from "@/components/todo/TodoInput.vue";
@@ -242,17 +258,18 @@
             }
             </script>
             
-        8.  컴포넌트 2차 구현
+
+        9.  컴포넌트 3차 구현: 상태 관리 구현
             props 와 이벤트를 이용하여 상태 관리 구현
 
-            step 8-1. src/components/todo/TodoHeader.vue  구현
+            step 9-1. src/components/todo/TodoHeader.vue 에 추가
             <script>
             export default {
                 /* pdtmc^2w */
             }
             </script> 
             
-            step 8-2. rc/components/todo/TodoInput.vue   구현
+            step 9-2. rc/components/todo/TodoInput.vue  에 추가
             <script>
             export default {
                 /* pdtmc^2w */
@@ -279,7 +296,7 @@
             }
             </script>
             
-            step 8-3. src/components/todo/TodoList.vue    구현
+            step 9-3. src/components/todo/TodoList.vue   에 추가
             <script>
             export default {
                 /* pdtmc^2w */
@@ -292,7 +309,7 @@
             };
             </script>
             
-            step 8-4. src/components/todo/TodoFooter.vue  구현
+            step 9-4. src/components/todo/TodoFooter.vue  에 추가
             <script>
             export default {
                 /* pdtmc^2w */
@@ -304,7 +321,7 @@
             };
             </script>
             
-            step 8-5. src/views/Todo.vue  구현
+            step 9-5. src/views/Todo.vue  에 추가
 
             <script>
             import TodoHeader from "@/components/todo/TodoHeader.vue";
@@ -349,20 +366,20 @@
             </script>
 
 
-        9. 프로젝트 3차 개선. 
-            상태 관리에 Vuex 적용 
-            step 9-1. src/views/Todo.vue  구현
-
-
         10. 프로젝트 4차 개선. 
+            상태 관리에 Vuex 적용 
+
+
+
+        11. 프로젝트 5차 개선. 
             로그인 기능 추가
             
-            setp 10-1. componets 에 추가
+            step 11-1. componets 에 추가
                     ~/src/components/login/user/UserLogin.vue 생성 및 수정
                     ~/src/components/login/user/UserRegister.vue 생성 및 수정
-            setp 10-2. views에 추가
+            step 11-2. views에 추가
                     cp ~/src/views/About.vue ~/src/views/Signup.vue
-            setp 10-3. ~/src/router/index.js 수정
+            step 11-3. ~/src/router/index.js 수정
                 import UserLogin from "@/components/user/UserLogin.vue";
 
                 {
@@ -375,7 +392,7 @@
                     name: "Login",
                     component: UserLogin
                 }
-            step 10-4. App.vue 에 router-link 추가
+            step 11-4. App.vue 에 router-link 추가
                 <div id="app">
                     <div>
                         <router-link to="/login">Login</router-link>
