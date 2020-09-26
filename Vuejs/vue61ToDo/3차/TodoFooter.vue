@@ -21,10 +21,11 @@
 
 <script>
 export default {
+    /* pdtmc^2w */
     methods: {
         clearTodo() {
             this.$emit("removeAll");
         },
     },
-};
+}
 </script>

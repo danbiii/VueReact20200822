@@ -31,26 +31,26 @@ import TodoList from "@/components/todo/TodoList.vue";
 import TodoFooter from "@/components/todo/TodoFooter.vue";
 
 export default {
-    data() {
+    data: function(){
         return {
             todoItems: []
         };
     },
     methods: {
-        clearAll() {
+        clearAll: function(){
             localStorage.clear();
             this.todoItems = [];
         },
-        addTodo(todoItem) {
+        addTodo: function(todoItem) {
             localStorage.setItem(todoItem, todoItem);
             this.todoItems.push(todoItem);
         },
-        removeTodo(todoItem, index) {
+        removeTodo: function(todoItem, index) {
             localStorage.removeItem(todoItem);
             this.todoItems.splice(index, 1);
         }
     },
-    created() {
+    created: function() {
         if (localStorage.length > 0) {
             for (var i = 0; i < localStorage.length; i++) {
                 this.todoItems.push(localStorage.key(i));
@@ -61,7 +61,7 @@ export default {
         TodoHeader: TodoHeader,
         TodoInput: TodoInput,
         TodoList: TodoList,
-        TodoFooter: TodoFooter
+        TodoFooter: TodoFooter,
     }
-};
+}
 </script>

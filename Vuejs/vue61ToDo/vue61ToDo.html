@@ -36,6 +36,7 @@
 
             step 02. vue -V                      # Vue-CLI 버전 확인
                 Vue CLI v4.5.6 
+
             step 03. vue create todoprj01        # Vue 프로젝트 생성. package.json 생성. 라이브러리 다운로드
                 Vue CLI v4.5.6 
                 ? Please pick a preset: Manually select features
@@ -68,6 +69,40 @@
 
             step 12. npm run lint   # 코드 표준화 검사
 
+            step 13. 코드 포맷팅 Prettier 설정
+                todoprj01/.prettierrc 파일을 만들고 파일 안에 아래 코드를 추가하시오. 
+
+                {
+                    "arrowParens": "avoid", // 화살표 함수 괄호 사용 방식
+                    "bracketSpacing": false, // 객체 리터럴에서 괄호에 공백 삽입 여부 
+                    "endOfLine": "auto", // EoF 방식, OS별로 처리 방식이 다름 
+                    "htmlWhitespaceSensitivity": "css", // HTML 공백 감도 설정
+                    "jsxBracketSameLine": false, // JSX의 마지막 `>`를 다음 줄로 내릴지 여부 
+                    "jsxSingleQuote": false, // JSX에 singe 쿼테이션 사용 여부
+                    "printWidth": 80, //  줄 바꿈 할 폭 길이
+                    "proseWrap": "preserve", // markdown 텍스트의 줄바꿈 방식 (v1.8.2)
+                    "quoteProps": "as-needed", // 객체 속성에 쿼테이션 적용 방식
+                    "singleQuote": false, // single 쿼테이션 사용 여부
+                    "semi": true, // 세미콜론 사용 여부
+                    "tabWidth": 4, // 탭 너비 
+                    "useTabs": false, // 탭 사용 여부
+                    "trailingComma": "all", // 여러 줄을 사용할 때, 후행 콤마 사용 방식
+                    "vueIndentScriptAndStyle": true, // Vue 파일의 script와 style 태그의 들여쓰기 여부 (v1.19.0)
+                    "parser": '', // 사용할 parser를 지정, 자동으로 지정됨
+                    "filepath": '', // parser를 유추할 수 있는 파일을 지정
+                    "rangeStart": 0, // 포맷팅을 부분 적용할 파일의 시작 라인 지정
+                    "rangeEnd": Infinity, // 포맷팅 부분 적용할 파일의 끝 라인 지정,
+                    "requirePragma": false, // 파일 상단에 미리 정의된 주석을 작성하고 Pragma로 포맷팅 사용 여부 지정 (v1.8.0)
+                    "insertPragma": false, // 미리 정의된 @format marker의 사용 여부 (v1.8.0)
+                    "overrides": [ 
+                      {
+                        "files": "*.json",
+                        "options": {
+                          "printWidth": 200
+                        }
+                      }
+                    ], // 특정 파일별로 옵션을 다르게 지정함, ESLint 방식 사용
+                  }
 
 
         3. 프로젝트 초기 설정. page 133~134
@@ -161,31 +196,35 @@
 
 
         7. 컴포넌트 1차 구현
-            src/components/todo/TodoHeader.vue  구현
+            step 7-1. src/components/todo/TodoHeader.vue  구현
             <script>
             export default {
+                /* pdtmc^2w */
             }
             </script> 
             
-            src/components/todo/TodoInput.vue   구현
+            step 7-2. rc/components/todo/TodoInput.vue   구현
             <script>
             export default {
+                /* pdtmc^2w */
             }
             </script>
             
-            src/components/todo/TodoList.vue    구현
+            step 7-3. src/components/todo/TodoList.vue    구현
             <script>
             export default {
+                /* pdtmc^2w */
             }
             </script>
             
-            src/components/todo/TodoFooter.vue  구현
+            step 7-4. src/components/todo/TodoFooter.vue  구현
             <script>
             export default {
+                /* pdtmc^2w */
             }
             </script>
             
-            src/views/Todo.vue  구현
+            step 7-5. src/views/Todo.vue  구현
             <script>
             import TodoHeader from "@/components/todo/TodoHeader.vue";
             import TodoInput  from "@/components/todo/TodoInput.vue";
@@ -195,21 +234,124 @@
             export default {
                 /* pdtmc^2w */
                 components : {
-                    "TodoHeader" : TodoHeader ,
-                    "TodoInput"  : TodoInput  ,
-                    "TodoList"   : TodoList   ,
-                    "TodoFooter" : TodoFooter ,
+                    TodoHeader: TodoHeader,
+                    TodoInput: TodoInput,
+                    TodoList: TodoList,
+                    TodoFooter: TodoFooter,
                 }
             }
             </script>
             
-        8.  프로젝트 2차 개선
-            상태 관리 구현
+        8.  컴포넌트 2차 구현
             props 와 이벤트를 이용하여 상태 관리 구현
+
+            step 8-1. src/components/todo/TodoHeader.vue  구현
+            <script>
+            export default {
+                /* pdtmc^2w */
+            }
+            </script> 
+            
+            step 8-2. rc/components/todo/TodoInput.vue   구현
+            <script>
+            export default {
+                /* pdtmc^2w */
+                data: function(){
+                    return {
+                        newTodoItem: "",
+                        showModal: false
+                    };
+                },
+                methods: {
+                    addTodo: function(){
+                        if (this.newTodoItem !== "") {
+                            var value = this.newTodoItem && this.newTodoItem.trim();
+                            this.$emit("addTodo", value);
+                            this.clearInput();
+                        } else {
+                            this.showModal = !this.showModal;
+                        }
+                    },
+                    clearInput: function(){
+                        this.newTodoItem = "";
+                    }
+                },
+            }
+            </script>
+            
+            step 8-3. src/components/todo/TodoList.vue    구현
+            <script>
+            export default {
+                /* pdtmc^2w */
+                props: ["propsdata"],
+                methods: {
+                    removeTodo: function(todoItem, index) {
+                        this.$emit("removeTodo", todoItem, index);
+                    },
+                },
+            };
+            </script>
+            
+            step 8-4. src/components/todo/TodoFooter.vue  구현
+            <script>
+            export default {
+                /* pdtmc^2w */
+                methods: {
+                    clearTodo: function(){
+                        this.$emit("removeAll");
+                    },
+                },
+            };
+            </script>
+            
+            step 8-5. src/views/Todo.vue  구현
+
+            <script>
+            import TodoHeader from "@/components/todo/TodoHeader.vue";
+            import TodoInput from "@/components/todo/TodoInput.vue";
+            import TodoList from "@/components/todo/TodoList.vue";
+            import TodoFooter from "@/components/todo/TodoFooter.vue";
+            
+            export default {
+                data: function(){
+                    return {
+                        todoItems: ["해야할일 1","해야할일 2"]
+                    };
+                },
+                methods: {
+                    clearAll: function(){
+                        localStorage.clear();
+                        this.$data.todoItems = [];
+                    },
+                    addTodo: function(todoItem) {
+                        localStorage.setItem(todoItem, todoItem);
+                        this.$data.todoItems.push(todoItem);
+                    },
+                    removeTodo: function(todoItem, index) {
+                        localStorage.removeItem(todoItem);
+                        this.$data.todoItems.splice(index, 1);
+                    }
+                },
+                created: function() {
+                    if (localStorage.length > 0) {
+                        for (var i = 0; i < localStorage.length; i++) {
+                            this.$data.todoItems.push(localStorage.key(i));
+                        }
+                    }
+                },
+                components: {
+                    TodoHeader: TodoHeader,
+                    TodoInput: TodoInput,
+                    TodoList: TodoList,
+                    TodoFooter: TodoFooter,
+                }
+            }
+            </script>
 
 
         9. 프로젝트 3차 개선. 
             상태 관리에 Vuex 적용 
+            step 9-1. src/views/Todo.vue  구현
 
 
         10. 프로젝트 4차 개선. 

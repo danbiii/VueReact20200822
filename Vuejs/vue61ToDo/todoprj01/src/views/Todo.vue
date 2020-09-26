@@ -19,7 +19,10 @@ button {
     <div id="app">
         <TodoHeader></TodoHeader>
         <TodoInput v-on:addTodo="addTodo"></TodoInput>
-        <TodoList v-bind:propsdata="todoItems" v-on:removeTodo="removeTodo"></TodoList>
+        <TodoList
+            v-bind:propsdata="todoItems"
+            v-on:removeTodo="removeTodo"
+        ></TodoList>
         <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
     </div>
 </template>
@@ -31,29 +34,29 @@ import TodoList from "@/components/todo/TodoList.vue";
 import TodoFooter from "@/components/todo/TodoFooter.vue";
 
 export default {
-    data() {
+    data: function() {
         return {
-            todoItems: []
+            todoItems: ["해야할일 1", "해야할일 2"]
         };
     },
     methods: {
-        clearAll() {
+        clearAll: function() {
             localStorage.clear();
-            this.todoItems = [];
+            this.$data.todoItems = [];
         },
-        addTodo(todoItem) {
+        addTodo: function(todoItem) {
             localStorage.setItem(todoItem, todoItem);
-            this.todoItems.push(todoItem);
+            this.$data.todoItems.push(todoItem);
         },
-        removeTodo(todoItem, index) {
+        removeTodo: function(todoItem, index) {
             localStorage.removeItem(todoItem);
-            this.todoItems.splice(index, 1);
+            this.$data.todoItems.splice(index, 1);
         }
     },
-    created() {
+    created: function() {
         if (localStorage.length > 0) {
             for (var i = 0; i < localStorage.length; i++) {
-                this.todoItems.push(localStorage.key(i));
+                this.$data.todoItems.push(localStorage.key(i));
             }
         }
     },

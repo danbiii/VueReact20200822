@@ -123,14 +123,15 @@ input:focus {
 
 <script>
 export default {
-    data() {
+    /* pdtmc^2w */
+    data: function(){
         return {
             newTodoItem: "",
             showModal: false
         };
     },
     methods: {
-        addTodo() {
+        addTodo: function(){
             if (this.newTodoItem !== "") {
                 var value = this.newTodoItem && this.newTodoItem.trim();
                 this.$emit("addTodo", value);
@@ -139,10 +140,9 @@ export default {
                 this.showModal = !this.showModal;
             }
         },
-        clearInput() {
+        clearInput: function(){
             this.newTodoItem = "";
         }
     },
-    components: {}
-};
+}
 </script>

@@ -13,5 +13,7 @@ h1 {
 </template>
 
 <script>
-export default {};
+export default {
+    /* pdtmc^2w */
+};
 </script>

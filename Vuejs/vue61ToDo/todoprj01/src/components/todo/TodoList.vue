@@ -60,11 +60,12 @@ li {
 
 <script>
 export default {
+    /* pdtmc^2w */
     props: ["propsdata"],
     methods: {
         removeTodo(todoItem, index) {
             this.$emit("removeTodo", todoItem, index);
-        },
-    },
+        }
+    }
 };
 </script>
