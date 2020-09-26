@@ -26,18 +26,42 @@ button {
 
 <script>
 import TodoHeader from "@/components/todo/TodoHeader.vue";
-import TodoInput  from "@/components/todo/TodoInput.vue";
-import TodoList   from "@/components/todo/TodoList.vue";
+import TodoInput from "@/components/todo/TodoInput.vue";
+import TodoList from "@/components/todo/TodoList.vue";
 import TodoFooter from "@/components/todo/TodoFooter.vue";
 
 export default {
-    /* pdtmc^2w */
-    components : {
-        "TodoHeader" : TodoHeader ,
-        "TodoInput"  : TodoInput  ,
-        "TodoList"   : TodoList   ,
-        "TodoFooter" : TodoFooter ,
+    data() {
+        return {
+            todoItems: []
+        };
+    },
+    methods: {
+        clearAll() {
+            localStorage.clear();
+            this.todoItems = [];
+        },
+        addTodo(todoItem) {
+            localStorage.setItem(todoItem, todoItem);
+            this.todoItems.push(todoItem);
+        },
+        removeTodo(todoItem, index) {
+            localStorage.removeItem(todoItem);
+            this.todoItems.splice(index, 1);
+        }
+    },
+    created() {
+        if (localStorage.length > 0) {
+            for (var i = 0; i < localStorage.length; i++) {
+                this.todoItems.push(localStorage.key(i));
+            }
+        }
+    },
+    components: {
+        TodoHeader: TodoHeader,
+        TodoInput: TodoInput,
+        TodoList: TodoList,
+        TodoFooter: TodoFooter
     }
-}
+};
 </script>
-

@@ -21,5 +21,10 @@
 
 <script>
 export default {
-}
+    methods: {
+        clearTodo() {
+            this.$emit("removeAll");
+        },
+    },
+};
 </script>

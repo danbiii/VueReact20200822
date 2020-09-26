@@ -31,17 +31,18 @@ import TodoList from "@/components/todo/TodoList.vue";
 import TodoFooter from "@/components/todo/TodoFooter.vue";
 
 export default {
-    data() {
+    /* pdtmc^2w */
+    data: function(){
         return {
-            todoItems: []
-        };
+            todoItems: [],
+        }
     },
     methods: {
-        clearAll() {
+        clearAll: function() {
         },
-        addTodo(todoItem) {
+        addTodo: function(todoItem) {
         },
-        removeTodo(todoItem, index) {
+        removeTodo: function(todoItem, index) {
         }
     },
     created() {
