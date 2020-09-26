@@ -80,7 +80,8 @@
 
 <!-- vue 스크립트 플러그인 임포트   -->
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
-<script> 
+<script>
+
     new Vue({
         el:"#app1",
         data : {
@@ -111,7 +112,21 @@
                 console.log("clickBindSrc");
                 this.$data.imagePath = "../images/heart.png";
             },
-        }
+        },
     })
+
+    new Vue({
+        el: "#app2",
+        data: {
+            message : null,
+            imagePath : "../images/accept.png",
+        },
+        methods: {
+            clickBindSrc   : function(e) {
+                this.imagePath = "../images/action_refresh.gif";
+                this.message = "버튼 클릭";
+            },
+        },
+    });
 
 </script>

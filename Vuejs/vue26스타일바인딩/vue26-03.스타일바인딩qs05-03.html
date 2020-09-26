@@ -111,19 +111,21 @@
     <div>
         <div id="eljvs">
             자바스크립로 style 적용<br>
-            <div style=" width: 100px; height: 50px; border: 1px solid black; text-align: center; line-height: 50px;"
-                id="a" onmouseover="overEvent(this)" onmouseout="outEvent(this)">
+            <div id="a" 
+                 style=" width: 100px; height: 50px; border: 1px solid black; text-align: center; line-height: 50px;"
+                 onmouseover="overEvent(this)" 
+                 onmouseout="outEvent(this)">
                 테스트
             </div>
         </div>
 
         <div id="elvue">
             Vue.js 로 style 적용<br>
-            <div id="c" 
-                v-bind:style="style1" 
-                v-on:mouseover="overEvent(this)" 
-                v-on:mouseout="outEvent(this)"
-                style="font-size: 12px;">
+            <div id="c"
+                 style="font-size: 12px;"
+                 v-bind:style="style1"
+                 v-on:mouseover="overEvent(this)" 
+                 v-on:mouseout="outEvent(this)">
                 테스트
             </div>
         </div>
@@ -135,7 +137,7 @@
 
 <!-- vue 스크립트 플러그인 임포트   -->
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
-<script>    
+<script>
     /*
     1. 인스턴스 만들기 : edtmc^2w
     2. 
@@ -143,17 +145,6 @@
     new Vue({
         el : "#example3",
         data : { 
-            /* 
-                height: 50px;
-                width: 150px;
-                border: 1px solid black;
-                text-align: center;
-                line-height: 50px;
-                font-weight: 800;
-                color: red;
-                background-color: darkgoldenrod;
-                padding: 50px;
-            */
             style1: null
         },
         template: null,
@@ -178,24 +169,38 @@
         computed: { },
         watch: { },
     });
+
     new Vue({
         el : "#elvue",
         data : { 
             style1: null
         },
         template: null,
-        methods: { 
+        methods: {
             overEvent: function(event) {
                 console.log("overEvent");
-                // mouseover 되면 배경색은 purple 로 글자색은 yellow 설정
+                /* mouseover 되면 배경색은 purple 로 글자색은 yellow
+                
+                background-color: purple;
+                color: yellow;
+                */
+                
+                // referenced type 이면 재할당 필요 
+                // Object Deep Copy : Object.assign( ); 사용
                 this.$data.style1 = {
                     backgroundColor : "purple",
                     color: "yellow",
                 }
             },
             outEvent: function(event) {
-                console.log("outEvent");                
-                // 버튼 위에서 mouseout 되면 배경색을 aqua 로 글자색은 black 
+                console.log("outEvent");
+                /* mouseout 되면 배경색을 aqua 로 글자색은 black 으로 
+                background-color: aqua;
+                color: black;
+                */
+                
+                // referenced type 이면 재할당 필요 
+                // Object Deep Copy : Object.assign( ); 사용
                 this.$data.style1 = {
                     backgroundColor : "aqua",
                     color: "black",
@@ -207,4 +212,32 @@
         watch: { },
     })
 
+    // 자바스크립트로 이벤트 핸들러 만들기 :: overEvent(this)
+    function overEvent(event) {
+        console.log("overEvent", event, event.target);
+        // 적용할 엘리먼트 찾기 === 자기자신
+        //  document.getElementById()  == event.target
+        event.style.backgroundColor = "purple";
+        event.style.color = "yellow";
+
+        /* object 합치기
+        1. Ojbect.assign() 메서드방식
+        2. spread 연산자 방식
+        3. jquery.extend() 메서드방식
+        4. JSON.stringfy()
+        */
+        Object.assign(event.style, {
+            backgroundColor: "purple",
+            color: "yellow",
+        });
+    }
+
+    // 자바스크립트로 이벤트 핸들러 만들기 :: outEvent
+    function outEvent(event) {
+        console.log("outEvent", event, event.target);
+        // 적용할 엘리먼트 찾기 === 자기자신
+        //  document.getElementById()  == event.target
+        event.style.backgroundColor = "aqua";
+        event.style.color = "black";
+    }
 </script>

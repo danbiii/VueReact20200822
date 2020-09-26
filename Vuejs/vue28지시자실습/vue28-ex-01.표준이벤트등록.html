@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Title</title>
+    <title>vue28-ex-01.표준이벤트등록</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -46,13 +46,13 @@
 
       "vue25-ex-01.이벤트바인딩.html" 를 참고하여 이벤트를 설정하시오.
 
-      a click
+      a 를 클릭하면 href 에 있는 값을 "img2"영역 에 나오게 하시오
         1. a 태그의 href 값을 가져온다.
         2. id="img2" 의 src 에 1번에서 얻은 href의 값을 넣는다.
         3. a 태그의 redirect 기능을 취소하시오.
 
-      id="but1" 인 엘리먼트에 mouseover, mouseout, click 효과 넣기
-      id="img-swap"인 엘리멘트에 hover 효과 넣기
+      id="but1" 인 엘리먼트에 mouseover, mouseout 효과 넣기
+      id="img-swap"인 엘리멘트에 mouseover, mouseout 효과 넣기
       span 엘리먼트에 mouseover, mouseout, mousedown, mouseup 효과 넣기
       id="sel" 엘리먼트에 change 효과 넣기
       id="ID" 엘리먼트에 focus, blur 효과 넣기
@@ -65,6 +65,69 @@
 
         <xmp>
             글자를 클릭하면 href 에 있는 값을 "img2"영역 에 나오게 하시오
+            click 이벤트를 핸들러 ==> imageclick
+        </xmp>
+        <ul>
+            <li><a class="image3" href="../images/image3.jpg"> 강아지 사진 </a></li>
+            <li><a class="image3" href="../images/image4.jpg"> 고양이 사진 </a></li>
+        </ul>
+
+        <img id="img2" v-bind:src="img_image3" />
+        <hr>
+
+        <xmp>
+            이미지 위에 마우스를 올리거나 내리면 src 에 있는 값을 "img" 태그에 나오게 하시오
+            이미지에 mouseover 와 mouseout 이벤트를 핸들러를 작성하시오.
+            mouseover 이벤트를 핸들러 ==> imageover
+            mouseout 이벤트를 핸들러 ==> imageout
+            이미지 위에 마우스를 내리면(mouseout ) ==> ../images/but1.gif , ../images/img_swap_off.png
+            이미지 위에 마우스를 올리면(mouseover) ==> ../images/but2.gif , ../images/img_swap_on.png
+        </xmp>
+        <img v-bind:src="img_but1" id="but1"/>
+        <img v-bind:src="img_swap" id="img-swap"/>
+        <hr>
+
+        <xmp>
+            span에 mouseover 시 이벤트 핸들러 ==> spanmouseover. background-color를 yellow로 설정
+            span에 mousedown 시 이벤트 핸들러 ==> spanmousedown. background-color를 blue로 설정
+            span에 mouseup 시 이벤트 핸들러 ==> spanmouseup. background-color를 pink로 설정
+            span에 mouseout 시 이벤트 핸들러 ==> spanmouseout. background-color를 red로 설정
+        </xmp>
+        <span>
+        </span>
+        <span>
+        </span>
+        <span>
+        </span>
+        <hr>
+
+        <xmp>
+            select 에 change 이벤트 핸들러를 작성하시오.
+        </xmp>
+        <select id="sel" v-on:change="selectchange">
+            <option value="../images/strawberry.gif">딸기
+            <option value="../images/banana.gif">바나나
+            <option value="../images/apple.gif" selected>사과
+        </select>
+        <img id="img" src="../images/apple.gif">
+        <hr>
+
+        <xmp>
+            input 태그에 focus, blur 효과 넣기
+            >>> input 태그에 테두리를 칠하는 경우에는 outline을 사용.
+            focus 이벤트 핸들러 ==> inputfocus. outline: 2px dotted red 설정
+            blur 이벤트 핸들러 ==> inputblur. outline: none 설정
+        </xmp>
+        <input TYPE="text" id="ID">
+        <hr>
+
+    </div>
+    
+    <script type="text/x-template" id="template">
+    <div>
+        <xmp>
+            글자를 클릭하면 href 에 있는 값을 "img2"영역 에 나오게 하시오
+            click 이벤트를 핸들러 ==> imageclick
         </xmp>
         <ul>
             <li><a class="image3" href="../images/image3.jpg" v-on:click="imageclick"> 강아지 사진 </a></li>
@@ -77,49 +140,60 @@
         <xmp>
             이미지 위에 마우스를 올리거나 내리면 src 에 있는 값을 "img" 태그에 나오게 하시오
             이미지에 mouseover 와 mouseout 이벤트를 핸들러를 작성하시오.
-            이미지 위에 마우스를 올리면(mouseover) ==> ../images/but2.gif , ../images/img_swap_on.png
+            mouseover 이벤트를 핸들러 ==> imageover
+            mouseout 이벤트를 핸들러 ==> imageout
             이미지 위에 마우스를 내리면(mouseout ) ==> ../images/but1.gif , ../images/img_swap_off.png
+            이미지 위에 마우스를 올리면(mouseover) ==> ../images/but2.gif , ../images/img_swap_on.png
         </xmp>
         <img v-bind:src="img_but1" id="but1" v-on:mouseover="imageover" v-on:mouseout="imageout" />
         <img v-bind:src="img_swap" id="img-swap" v-on:mouseover="imageover" v-on:mouseout="imageout" />
         <hr>
 
         <xmp>
-            박스에 mouseover 시 background-color를 yellow로
-            박스에 mousedown 시 background-color를 blue로
-            박스에 mouseup 시 background-color를 pink로
-            박스에 mouseout 시 background-color를 red로
+            span에 mouseover 시 이벤트 핸들러 ==> spanmouseover. background-color를 yellow로 설정
+            span에 mousedown 시 이벤트 핸들러 ==> spanmousedown. background-color를 blue로 설정
+            span에 mouseup 시 이벤트 핸들러 ==> spanmouseup. background-color를 pink로 설정
+            span에 mouseout 시 이벤트 핸들러 ==> spanmouseout. background-color를 red로 설정
         </xmp>
-        <span v-on:mouseover="spanmouseover" v-on:mousedown="spanmousedown" v-on:mouseup="spanmouseup"
-            v-on:mouseout="spanmouseout"></span>
-        <span v-on:mouseover="spanmouseover" v-on:mousedown="spanmousedown" v-on:mouseup="spanmouseup"
-            v-on:mouseout="spanmouseout"></span>
-        <span v-on:mouseover="spanmouseover" v-on:mousedown="spanmousedown" v-on:mouseup="spanmouseup"
-            v-on:mouseout="spanmouseout"></span>
+        <span v-on:mouseover="spanmouseover" 
+              v-on:mousedown="spanmousedown" 
+              v-on:mouseup="spanmouseup"
+              v-on:mouseout="spanmouseout">
+        </span>
+        <span v-on:mouseover="spanmouseover" 
+              v-on:mousedown="spanmousedown" 
+              v-on:mouseup="spanmouseup"
+              v-on:mouseout="spanmouseout">
+        </span>
+        <span v-on:mouseover="spanmouseover" 
+              v-on:mousedown="spanmousedown" 
+              v-on:mouseup="spanmouseup"
+              v-on:mouseout="spanmouseout">
+        </span>
         <hr>
 
-        <pre>
-select 에 change 이벤트 핸들러를 작성하시오.
-        </pre>
+        <xmp>
+            select 에 change 이벤트 핸들러를 작성하시오.
+        </xmp>
         <select id="sel" v-on:change="selectchange">
-            <option value="../images/strawberry.gif">딸기
-            <option value="../images/banana.gif">바나나
-            <option value="../images/apple.gif" selected>사과
+            <option value="../images/strawberry.gif">딸기</option>
+            <option value="../images/banana.gif">바나나</option>
+            <option value="../images/apple.gif" selected>사과</option>
         </select>
         <img id="img" v-bind:src="img_select">
         <hr>
 
         <xmp>
-            엘리먼트에 focus, blur 효과 넣기
-            focus 할때 outline: 2px dotted red 설정
-            blur 할때 outline: none;
+            input 태그에 focus, blur 효과 넣기
             >>> input 태그에 테두리를 칠하는 경우에는 outline을 사용.
+            focus 이벤트 핸들러 ==> inputfocus. outline: 2px dotted red 설정
+            blur 이벤트 핸들러 ==> inputblur. outline: none 설정
         </xmp>
-        <input TYPE="text" id="ID">
-        <label style="margin: 0 0 0 20px;">input 태그에 테두리를 칠하는 경우에는 outline을 사용.</label>
+        <input TYPE="text" id="ID" v-on:blur="inputblur" v-on:focus="inputfocus">
         <hr>
 
     </div>
+    </script>
 </body>
 
 </html>
@@ -127,62 +201,85 @@ select 에 change 이벤트 핸들러를 작성하시오.
 <!-- vue 스크립트 플러그인 임포트   -->
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
 <script> 
+
+    var arr_but1 = ["../images/but1.gif", "../images/but2.gif"];
+    var arr_swap = ["../images/img_swap_off.png", "../images/img_swap_on.png"];
+    
     new Vue({
         el: "#app",
         data: {
             img_image3: null,
-            img_but1: "../images/but1.gif",
-            img_swap: "../images/img_swap_off.png",
+            img_but1: arr_but1[0],
+            img_swap: arr_swap[0],
             img_select: "../images/apple.gif",
         },
+        template: "#template",
         methods: {
             imageclick: function(event){
+                // event.target : 클릭된 a 태그다.
+                // a 태그의 href 속성같을 가져온다 ===> event.target.href 
                 console.log("imageclick", event.target.href);
                 this.$data.img_image3 = event.target.href;
-                
-                // a 태그의 이벤트 취소 
+
+                // a 태그의 리다이렉트 취소
                 event.preventDefault();
-                event.stopPropagation();                
+                event.stopPropagation();
             },
             imageover: function(event){
                 console.log("imageover", event.target);
-
+                
+                // event.target : 클릭된 자기자신이다.
                 if( event.target.id === "but1" ){
-                    this.$data.img_but1 =  "../images/but2.gif";
+                    this.$data.img_but1 = arr_but1[1];
                 }
                 else if( event.target.id === "img-swap" ){
-                    this.$data.img_swap =  "../images/img_swap_on.png";
+                    this.$data.img_swap = arr_swap[1];
                 }
             },
             imageout: function(event){
                 console.log("imageout", event.target);
-
+                
+                // event.target : 클릭된 자기자신이다.
                 if( event.target.id === "but1" ){
-                    this.$data.img_but1 =  "../images/but1.gif";
+                    this.$data.img_but1 = arr_but1[0];
                 }
                 else if( event.target.id === "img-swap" ){
-                    this.$data.img_swap =  "../images/img_swap_off.png";
+                    this.$data.img_swap = arr_swap[0];
                 }
             },
             spanmouseover: function(event){
+                console.log("spanmouseover", event.target);
                 //박스에 mouseover 시 background-color를 yellow로
                 event.target.style.backgroundColor = "yellow";
             },
             spanmousedown: function(event){
+                console.log("spanmousedown", event.target);
                 //박스에 mousedown 시 background-color를 blue로
                 event.target.style.backgroundColor = "blue";
             },
             spanmouseup: function(event){
+                console.log("spanmouseup", event.target);
                 //박스에 mouseup 시 background-color를 pink로
                 event.target.style.backgroundColor = "pink";
             },
             spanmouseout: function(event){
+                console.log("spanmouseout", event.target);
                 //박스에 mouseout 시 background-color를 red로
                 event.target.style.backgroundColor = "red";
             },
             selectchange: function(event) {
                 console.log("selectchange", event.target.value);
-                this.$data.img_select = event.target.value;                
+                this.$data.img_select = event.target.value;
+            },
+            inputblur: function(event) {
+                console.log("inputblur", event.target);
+                // blur 이벤트 핸들러 ==> inputblur. outline: none 설정
+                event.target.style.outline = "none";
+            },
+            inputfocus: function(event) {
+                console.log("inputfocus", event.target);
+                // focus 이벤트 핸들러 ==> inputfocus. outline: 2px dotted red 설정
+                event.target.style.outline = "2px dotted red";
             },
         }
     })

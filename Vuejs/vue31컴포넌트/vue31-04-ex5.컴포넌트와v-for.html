@@ -51,7 +51,7 @@
         </p>
         <p>
             <b v-for="(val, i) in arr" v-bind:key="i">
-                <component-box v-bind:num="val"></component-box>                
+                <component-box v-bind:num="val"></component-box>
             </b>
         </p>
     </div>
@@ -67,8 +67,8 @@
 
     // 컴포넌트 만들기
     Vue.component("component-box", {
-        /* pdtmc^2w */
-        props: [ "num" ],
+        // 컴포넌트 속성 : pdtmc^2w
+        props: ["num"],
         data: function(){
             return {
                 style1 : {
@@ -77,19 +77,24 @@
                     border: "1px dashed blue",
                     padding: "10px 20px",
                     margin: "5px",
-                    textAlign:"center",
+                    textAlign: "center",
                 }
-            }
+            };
         },
-        template: `
-            <span v-bind:style="style1">{{ num }}</span>
+        template : `
+            <span v-bind:style="style1">
+                {{num}}
+            </span>
         `,
+        methods: {},
+        computed: {},
+        components : { },
+        watch: {},
     });
 
-    
-    // 인스턴스 만들기
+    // 인스턴스 만들기 
     new Vue({
-        el:"#app",
+        el: "#app",
         data: {
             arr: [1,2,3,4,5],
         },

@@ -134,11 +134,15 @@
                 }
             },
             btn6_onclick: function(event, className, show) {
-                console.log( event.target);
-                // this.$data.css1.csbord=true 
-                // this.$data.css1.csbord=false
-                // this.$data.css1.whsize=true
-                // this.$data.css1.whsize=false 
+
+                console.log(event.target);
+                //btn6_onclick(this.event, 'whsize', true )
+                //btn6_onclick(this.event, 'whsize', false)
+                //btn6_onclick(this.event, 'csbord', true )
+                //btn6_onclick(this.event, 'csbord', false)
+                
+                //this.$data.css1["csbord"] = true; // false;
+                //this.$data.css1["whsize"] = true; // false;
                 this.$data.css1[className] = show;
             },
         },

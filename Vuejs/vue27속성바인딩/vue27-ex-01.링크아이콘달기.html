@@ -36,7 +36,7 @@
             ==> class 에 해당되는 값을 data 에서 어떻게 설정할 것인가?
         2. a 태그에 click 이벤트 핸들러 작성. 이벤트지시자(v-on:click) 를 추가
             파일의 확장자가 ppt 이면 a.presentation 적용
-            파일의 확장자가 mp4 이면 a.viedo 적용
+            파일의 확장자가 mp4 이면 a.video 적용
             파일의 확장자가 pdf 이면 a.pdf 적용
             파일의 확장자가 gif 이면 a.image 적용
             파일의 확장자가 png 이면 a.image 적용
@@ -49,40 +49,60 @@
             var ext = href.substr(-3); // href.substr(href.lenght-3, 3);
     </xmp>
     <hr>
-    <div id="content">
+    <div id="app">
         <h1>Adding Icons to Links</h1>
         <p>Here's a list of downloadable files:</p>
         <ul class="icon-links">
-            <li><a v-on:click="myclick" href="presentation.ppt">Presentation slides</a></li>
-            <li><a v-on:click="myclick" href="video.mp4">Video of presentation</a></li>
-            <li><a v-on:click="myclick" href="notes.pdf">Notes for presentation</a></li>
-            <li><a v-on:click="myclick" href="icons.gif">GIF Icon sprite</a></li>
-            <li><a v-on:click="myclick" href="icons.png">PNG Icon sprite</a></li>
-            <li><a v-on:click="myclick" href="icons.jpg">PNG Icon sprite</a></li>
-            <li><a v-on:click="myclick" href="fuyyu.ppt">Presentation slides</a></li>
-            <li><a v-on:click="myclick" href="fyyuy.mp4">Video of presentation</a></li>
-            <li><a v-on:click="myclick" href="uydyuflk.pdf">Notes for presentation</a></li>
-            <li><a v-on:click="myclick" href="OIP.gif">GIF Icon sprite</a></li>
-            <li><a v-on:click="myclick" href="ID7890IO.png">PNG Icon sprite</a></li>
-            <li><a v-on:click="myclick" href="PFDY.jpg">PNG Icon sprite</a></li>
+            <li><a href="presentation.ppt">Presentation slides</a></li>
+            <li><a href="video.mp4">Video of presentation</a></li>
+            <li><a href="notes.pdf">Notes for presentation</a></li>
+            <li><a href="icons.gif">GIF Icon sprite</a></li>
+            <li><a href="icons.png">PNG Icon sprite</a></li>
+            <li><a href="icons.jpg">PNG Icon sprite</a></li>
+            <li><a href="fuyyu.ppt">Presentation slides</a></li>
+            <li><a href="fyyuy.mp4">Video of presentation</a></li>
+            <li><a href="uydyuflk.pdf">Notes for presentation</a></li>
+            <li><a href="OIP.gif">GIF Icon sprite</a></li>
+            <li><a href="ID7890IO.png">PNG Icon sprite</a></li>
+            <li><a href="PFDY.jpg">PNG Icon sprite</a></li>
         </ul>
     </div>
-    <hr>        
+    <hr>
     
+    <script type="text/x-template" id="template">
+    <div>
+        <h1>Adding Icons to Links</h1>
+        <p>Here's a list of downloadable files:</p>
+        <ul class="icon-links">
+            <li><a v-on:click="atagclick" href="presentation.ppt">Presentation slides</a></li>
+            <li><a v-on:click="atagclick" href="video.mp4">Video of presentation</a></li>
+            <li><a v-on:click="atagclick" href="notes.pdf">Notes for presentation</a></li>
+            <li><a v-on:click="atagclick" href="icons.gif">GIF Icon sprite</a></li>
+            <li><a v-on:click="atagclick" href="icons.png">PNG Icon sprite</a></li>
+            <li><a v-on:click="atagclick" href="icons.jpg">PNG Icon sprite</a></li>
+            <li><a v-on:click="atagclick" href="fuyyu.ppt">Presentation slides</a></li>
+            <li><a v-on:click="atagclick" href="fyyuy.mp4">Video of presentation</a></li>
+            <li><a v-on:click="atagclick" href="uydyuflk.pdf">Notes for presentation</a></li>
+            <li><a v-on:click="atagclick" href="OIP.gif">GIF Icon sprite</a></li>
+            <li><a v-on:click="atagclick" href="ID7890IO.png">PNG Icon sprite</a></li>
+            <li><a v-on:click="atagclick" href="PFDY.jpg">PNG Icon sprite</a></li>
+        </ul>
+    </div>
+    </script>
 </body>
 
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
-<script> 
+<script>
     new Vue({
-        el: "#content",
+        el: "#app",
         data: {
-
         },
+        template: "#template",
         methods: {
-            myclick : function(event){
+            atagclick : function(event){
                 console.log(event.target);
 
                 // 1. 이벤트 취소 설정
@@ -98,7 +118,7 @@
                 
 
                 // 파일의 확장자가 ppt 이면 a.presentation 적용
-                // 파일의 확장자가 mp4 이면 a.viedo 적용
+                // 파일의 확장자가 mp4 이면 a.video 적용
                 // 파일의 확장자가 pdf 이면 a.pdf 적용
                 // 파일의 확장자가 gif 이면 a.image 적용
                 // 파일의 확장자가 png 이면 a.image 적용
@@ -107,7 +127,7 @@
                     event.target.className = "presentation";
                 }
                 else if( ext === "mp4" ) {
-                    event.target.className = "viedo";
+                    event.target.className = "video";
                 }
                 else if( ext === "pdf" ) {
                     event.target.className = "pdf";

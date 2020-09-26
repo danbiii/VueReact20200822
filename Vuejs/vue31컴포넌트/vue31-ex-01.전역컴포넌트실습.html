@@ -7,10 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <style>
-        body {
-            background-color: lightgrey;
-        }
-        body > * {
+        #app * {
             text-align: center;
             vertical-align: middle;
             line-height: 2em;
@@ -65,10 +62,30 @@
 </head>
 
 <body>
+    <xmp>
+    5개의 컴포넌트 만들기
+        component-header
+        component-content
+        component-footer
+        component-aside
+        component-content-list
+        
+    전역 컴포넌트 : 3개 
+        component-header
+        component-content
+        component-footer
+        
+    지역 컴포넌트: 2개
+        component-aside
+        component-content-list
+        
+    </xmp>
+    <hr />
+    
     <div id="app">
-        <header-componet></header-componet>
-        <content-componet></content-componet>
-        <footer-componet></footer-componet>
+        <component-header></component-header>
+        <component-content></component-content>
+        <component-footer></component-footer>
     </div>
 </body>
 
@@ -78,43 +95,60 @@
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
 <script> 
 
-    Vue.component("header-componet",{
-        template:`
-        <header>
-            Header
-        </header>
-        `,
+    Vue.component("component-header", {
+        props: [],
+        data: function() { return {}; },
+        template : `
+            <header>
+                Header
+            </header>
+        `
     })
-    Vue.component("aside-component", {
-        template:`
+    Vue.component("component-footer", {
+        props: [],
+        data: function() { return {}; },
+        template : `
+            <footer>
+                Footer
+            </footer>
+        `
+    })
+    
+    var componentAside = {
+        props: [],
+        data: function() { return {}; },
+        template : `
             <aside>
                 Aside
             </aside>
         `
-    })
-    Vue.component("content-list-component", {
-        template:`
+    }
+    var componentContentList = {
+        props: [],
+        data: function() { return {}; },
+        template : `
             <div id="content-list">
                 List
             </div>
         `
-    })
-    Vue.component("content-componet",{
-        template:`
+    }
+    Vue.component("component-content", {
+        props: [],
+        data: function() { return {}; },
+        template : `
         <div id="content">
             <p>Content</p>
-            <aside-component></aside-component>
-            <content-list-component></content-list-component>
+            <component-aside></component-aside>
+            <component-content-list></component-content-list>
         </div>
         `,
+        components: {
+            "component-aside": componentAside,
+            "component-content-list": componentContentList,
+        }
     })
-    Vue.component("footer-componet",{
-        template:`
-        <footer>
-            Footer
-        </footer>
-        `,
-    })
+
+    // Vue 인스턴스 만들기
     new Vue({
         el:"#app",
         data: {},
