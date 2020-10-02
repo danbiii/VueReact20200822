@@ -65,7 +65,7 @@ export default {
     methods: {
         removeTodo(todoItem, index) {
             this.$emit("removeTodo", todoItem, index);
-        },
-    },
-}
+        }
+    }
+};
 </script>

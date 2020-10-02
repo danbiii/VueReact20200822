@@ -124,14 +124,14 @@ input:focus {
 <script>
 export default {
     /* pdtmc^2w */
-    data: function(){
+    data: function() {
         return {
             newTodoItem: "",
             showModal: false
         };
     },
     methods: {
-        addTodo: function(){
+        addTodo: function() {
             if (this.newTodoItem !== "") {
                 var value = this.newTodoItem && this.newTodoItem.trim();
                 this.$emit("addTodo", value);
@@ -140,9 +140,9 @@ export default {
                 this.showModal = !this.showModal;
             }
         },
-        clearInput: function(){
+        clearInput: function() {
             this.newTodoItem = "";
         }
-    },
-}
+    }
+};
 </script>
