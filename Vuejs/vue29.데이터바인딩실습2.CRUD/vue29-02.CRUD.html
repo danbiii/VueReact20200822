@@ -52,10 +52,10 @@
                 <td>{{man.name}}</td>
                 <td>{{man.power}}</td>
                 <td>
-                    <button v-on:click="doUp(man.id, index)">Power Up</button>
-                    <button v-on:click="doDown(man.id, index)">Power Down</button>
-                    <button v-on:click="doEdit(man.id, index)">Edit</button>
-                    <button v-on:click="doDel(man.id, index)">Del</button>
+                    <button v-on:click="doUp(index)">Power Up</button>
+                    <button v-on:click="doDown(index)">Power Down</button>
+                    <button v-on:click="doEdit(index)">Edit</button>
+                    <button v-on:click="doDel(index)">Del</button>
                 </td>
             </tr>
         </table>
@@ -63,5 +63,6 @@
 
 </body>
 </html>
+
 <!-- vue 스크립트 플러그인 임포트   -->
 

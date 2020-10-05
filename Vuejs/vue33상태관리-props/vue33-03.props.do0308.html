@@ -46,23 +46,25 @@
 
     Vue.component("child-component", {
         /* pdtmc^2w */
-        props:['propsdata'],
+        props: ["propsdata"], // {}
         data: function(){
             return {
 
             }
         },
-        template: `
-            <p>{{ propsdata }}</p>
-        `
-    })
+        template : `
+            <div>
+                {{ propsdata }}
+            </div>
+        `,
+    });
 
     new Vue({
         /* edtmc^2w */
-        el: '#app',
+        el : "#app",
         data : {
-            message : "Hello,vue"
+            message: "Hello Vue! passed from Parent Component",
         },
-    })
+    });
 
 </script>

@@ -89,10 +89,11 @@
 
 <!-- vue 스크립트 플러그인 임포트   -->
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
-<script> 
-    Vue.component("component-child",{
+<script>
+    Vue.component("component-child", {
+        /* p dt mc^2w */
         props: ["num"],
-        data: function(){ return{} },
+        data: function(){ return {} },
         template:`
           <div class="component-child">
               Child counter : {{ num }} <br>
@@ -101,32 +102,41 @@
           </div>
         `,
         methods: {
-            addCounter: function(event){
+            addCounter : function(event){
+                // 이벤트 발생시키기 ==> this.$emit()
+                // 이벤트명: add-counter
                 // vue인스턴스.$methods.addCounter(event, arg) 를 호출
-                this.$emit("add-counter", event,  +10 );
+                this.$emit("add-counter", event, +10);
             },
-            subCounter: function(event){
+            subCounter : function(event){
+                // 이벤트 발생시키기 ==> this.$emit()
+                // 이벤트명: sub-counter
                 // vue인스턴스.$methods.subCounter(event, arg) 를 호출
-                this.$emit("sub-counter", event, -10 );
+                this.$emit("sub-counter", event, -10);
             },
         },
-    })
-
+    });
+    
     new Vue({
+        /* e dt mc^2w */
         el: "#app",
         data: {
             counter: 0,
         },
         methods: {
-            addCounter: function(event, arg){ 
-                console.log("addCounter",event, arg );
-                this.$data.counter = this.$data.counter + arg ;
+            addCounter : function(event, param){
+                console.log("addCounter",event, event.target, event.target.name );
+
+                // event 는 무엇일까요? 부모일때와 자식일때 다르다.             
+                this.$data.counter = this.$data.counter + param;
             },
-            subCounter: function(event, arg){ 
-                console.log("subCounter",event, arg );
-                this.$data.counter = this.$data.counter - arg ;
+            subCounter : function(event, param){
+                console.log("subCounter",event, event.target, event.target.name );
+                debugger;
+                // event 는 무엇일까요? 부모일때와 자식일때 다르다. 
+                this.$data.counter = this.$data.counter + param;
             },
-        }
-    })
+        },
+    });
 
 </script>
