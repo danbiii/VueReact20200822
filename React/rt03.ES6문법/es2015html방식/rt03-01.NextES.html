@@ -43,27 +43,4 @@
 </body>
 </html>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
-<script type="text/babel">
-    let name = "world";
-    console.log( `Hello ${name}` );
-
-
-    let msg = "global scope";
-
-    if( true ){
-        let msg = "block scope"
-    }
-
-    function outer(params) {
-
-        let msg = "function scope at outer ";
-        console.log(msg);
-
-        if( true ){
-            let msg = "block scope at outer ";
-            console.log(msg);
-        }
-    }
-
-</script>
+
