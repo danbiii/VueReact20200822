@@ -88,38 +88,7 @@
         </div>
     </div>
 
-    <script type="text/x-template" id="handler-template">
-        <div>
-            <div>
-                <h3>가능한 방법</h3>
-                <button onClick={this.handlerClick}              >handlerClick              </button>
-                <br />
-                <br />
-                <h3>불가능한 방법</h3>
-                <button onClick={this.handlerClick(this        )}>handlerClick(this)        </button>
-                <button onClick={this.handlerClick(event       )}>handlerClick(event)       </button>
-                <button onClick={this.handlerClick(window.event)}>handlerClick(window.event)</button>
-                <button onClick={this.handlerClick(window      )}>handlerClick(window)      </button>
-            </div>
-
-            <hr/>
-
-            <div>
-                <h3>가능한 방법</h3>
-                <span className="blue" onClick={this.clickWithNoParam}> </span>
-                <span className="blue" onClick={this.clickWithNoParam} data-param1="123"> </span>
-                <span className="blue" onClick={this.clickWithNoParam} data-param2="abc"> </span>
-                <span className="blue" onClick={this.clickWithNoParam} data-param1="123"  data-param2="abc"> </span>
-                <br/>
-                <h3>불가능한 방법</h3>
-                <span className="red" onClick={this.clickWithParam(event)}>      </span>
-                <span className="red" onClick={this.clickWithParam(event, 123)}>      </span>
-                <span className="red" onClick={this.clickWithParam(event, null, 'abc')}></span>
-                <span className="red" onClick={this.clickWithParam(event, 123, 'abc')}></span>
-                <br/>
-            </div>
-        </div>
-    </script>
+    
 </body>
 
 </html>
