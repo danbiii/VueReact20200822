@@ -11,6 +11,14 @@
 
     <!-- CSS import -->
     <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        span {
+            display: inline-block;
+            width: 140px;
+            cursor: pointer;
+            margin: 5px
+        }
+    </style>
 </head>
 
 <body>
@@ -22,14 +30,21 @@
     </xmp>
     <hr>
 
-    <div id="app1">
-        <div>{{num}}</div>
-        <button v-on:click="clickBtn">클릭</button>
-    </div>
-    <hr>
-    <div id="app2">
-        <div>{{num}}</div>
-        <button v-on:click="clickBtn(10)">클릭</button>    <== 실습
+    <div id="app">
+        <h3>1씩 증가하는 click 이벤트 핸들러 작성 <== 같이</h3>
+        <span>1씩 증가: {{sum1}}</span>
+        <button v-on:click="clickBtn1">1씩 증가</button>
+        <hr>
+
+        <h3>data-num 속성에 설정된 값만큼 증가하는 이벤트 핸들러 작성 <== 각자</h3>
+        <span>10씩 증가: {{sum10}}</span>
+        <button v-on:click="clickBtn10" data-num="10">10씩 증가</button>
+
+        <hr>
+        <h3>input 태그에 입력된 값만큼 증가하는 이벤트 핸들러 작성 <== 각자</h3>
+        <span>{{numInput}}씩 증가: {{sumInput}}</span>
+        <input type="number" name="number" v-model:value="numInput">
+        <button v-on:click="clickBtnInput">{{numInput}} 씩 증가</button>
     </div>
 
 </body>
@@ -41,38 +56,34 @@
 <script>
     new Vue({
         /* e dt mc^2 w */
-        el: "#app1",
-        data: { 
-            num: 0,
+        el: "#app",
+        data: {
+            sum1: 0,
+            sum10: 0,
+            numInput: 0,
+            sumInput: 0,
         },
-        template: null, 
+        template: ``,
         methods: {
-            clickBtn: function(event){
+            clickBtn1: function(event){
                 console.log(event); // 태그 정보
-                this.$data.num = this.$data.num + 1;
-                // == this.$set(this.$data, "num", this.$data.num + 1)
+                this.$data.sum1 = this.$data.sum1 + 1;
+                // == this.$set(this.$data, "sum1", this.$data.sum1 + 1)
+            },
+            clickBtn10: function(event){
+                console.log(event); // 태그 정보
+                var num = event.target.dataset.num;
+                this.$data.sum10 = this.$data.sum10 + Number(num);
+                // == this.$set(this.$data, "sum10", this.$data.sum10 + Number(num) );
+            },
+            clickBtnInput: function(event){
+                console.log(event); // 태그 정보
+                this.$data.sumInput = this.$data.sumInput + Number(this.$data.numInput);
+                // == this.$set(this.$data, "sumInput", this.$data.sumInput + Number(this.$data.numInput) );
             },
         },
         components: {},
         computed: {},
         watch: {},
-    }); 
-    new Vue({
-        /* e dt mc^2 w */
-        el: "#app2",
-        data: { 
-            num: 0,
-        },
-        template: null, 
-        methods: {
-            clickBtn: function(event){
-                console.log(event); // 10 
-                this.$data.num = this.$data.num + event;
-                // == this.$set(this.$data, "num", this.$data.num + event)
-            },
-        },
-        components: {},
-        computed: {},
-        watch: {},
-    }); 
-</script>  
+    });
+</script>
