@@ -18,13 +18,24 @@
         컴포넌트명: ElectronClock
     2. JSX 에서 style 작성법을 학습한다.     
        font-size: 80pt;
-    3. 매초 렌더링의 개념을 익한다. 
-        window.setInterval(함수, 시간) 사용 
-    4. 현재 시간 얻는 방법: new Date().toLocaleTimeString();
+    3. 현재 시간 얻는 방법: new Date().toLocaleTimeString();
         const d = new Date();
         const h = d.getHours();
         const m = d.getMinutes();
         const s = d.getSeconds();
+    4. 매초 렌더링의 개념을 익한다. 
+        window.setInterval(함수, 시간) 사용 
+
+    작업순서
+        1. 한번만 현재 시간이 출력되게 
+        2. 1번이 완성되면 setInterval() 기능을 추가한다. 
+        
+    단계1: React 객체 스크립트 플러그인 추가 or import. 
+    단계2. React 객체 import 여부 확인
+        console.log(React);
+        console.log(ReactDOM);
+    단계3. React.Component 만들기
+    단계4. ReactDOM.render() 에 컴포넌트 주입
 
     <img src="../images/electronclock.png" alt="">
 
@@ -37,4 +48,54 @@
 </html>
 
 <!-- react 플러그인 include   -->
-<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js"> /* import { React} from 'react'; */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">/* import { ReactDOM } from 'react-dom'; */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* JSX를 자바스크립트로 변환 */</script>
+<script type="text/babel">
+
+    //import React, { Component } from 'react';
+    //import ReactDOM from 'react-dom'
+    
+    console.log(React);
+    console.log(React.Component);
+    console.log(ReactDOM);
+    
+    class ElectronClock extends React.Component {
+        state = {
+            style1 : {
+                fontSize: "80pt",
+            }
+        }
+        z2 = (val) => {
+            /* 오전인 경우 숫자앞에 0 붙이기 */
+            const str = "00" + val; 
+            // 004  --> 04
+            // 0016 --> 16
+            return str.substr(str.length-2, 2);
+        }
+        render() {
+
+            const d = new Date();
+            let h = d.getHours();
+            let m = d.getMinutes();
+            let s = d.getSeconds();
+
+            h = this.z2(h);
+            m = this.z2(m);
+            s = this.z2(s);
+
+            return (
+                <div style={this.state.style1}>
+                    {h}:{m}:{s}
+                </div>
+            );
+        }
+    }
+
+    setInterval( function(){
+        ReactDOM.render( <ElectronClock></ElectronClock>, document.getElementById("app") );
+    }, 1000); // 1000 ms = 1 s
+    
+
+</script>
