@@ -35,4 +35,27 @@
 </body>
 
 </html>
-
+
+<!-- Babel 사용하기 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script type="text/babel">
+
+const cities = ["서울", "부산", "제주"];
+console.log(...cities); // "서울", "부산", "제주" // ... : spread 연산자
+
+const east = ["Uganda", "Kenya", "Tanzania"];
+const west = ["Nigeria", "Cameroon", "Ghana"];
+const countries = [...east, ...west]; // ... : spread 연산자
+console.log(countries); // ["Uganda", "Kenya", "Tanzania", "Nigeria", "Cameroon", "Ghana"]
+
+let lakes = ["경포호", "화진포", "송지호", "청초호"];
+let [first, ...rest] = lakes;  // ...rest : rest 연산자 
+console.log(rest ) // ["화진포", "송지호", "청초호"]
+
+let [city1, ...cityrest] = [...east, ...west]; 
+// ...cityrest: rest 연산자  
+// ...east  : spread 연산자
+// ...west  : spread 연산자
+console.log(cityrest ); // ["Kenya", "Tanzania", "Nigeria", "Cameroon", "Ghana"]
+</script>
+
