@@ -31,3 +31,59 @@
 </html>
 
 <!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js"> /* import { React} from 'react'; */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">/* import { ReactDOM } from 'react-dom'; */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* JSX를 자바스크립트로 변환 */</script>
+<script type="text/babel">
+
+    //import React, { Component } from 'react';
+    //import ReactDOM from 'react-dom'
+    
+    console.log(React);
+    console.log(ReactDOM);
+    
+    class App extends React.Component {
+    
+        state = {
+            r: 0
+        }
+        constructor(props) {
+            super(props);
+            // this 바인딩    
+        }
+        componentDidMount() {
+            // 마운트 완료 후에  : 한번만
+            console.log("componentDidMount");
+        }
+        componentDidUpdate(prevProps, prevState) {
+            // 업데이트 완료 후에 : 여러번, state 가 변경될 때마다
+            console.log("componentDidUpdate", prevProps, prevState);
+        }
+        componentWillUnmount() {
+            // 언마운트 완료 후에 : 페이지 unload 될 때 한번. 
+            console.log("componentWillUnmount");
+        }
+        handler = (e)=>{
+            // 이벤트 핸들러를 화살표 함수로 만들면 constructor(생성자)에서 this를 bind() 생략해도 된다
+            // 버튼을 클릭하면 state.r 값을 1씩 증가 시키시오. 
+            // Vue에서는 this.$data 값을 바꿀때는 Vue.set() 를 사용.
+            // React에서는 this.state 의 값을 바꿀 때는 setState() 메서드 사용.
+            // this.setState() 역할 : 값변경 + 리렌더링.
+            console.log("handler");
+            //this.state.r = this.state.r +  1; // ==> 값은 바뀐다. 화면은 바뀌지 않는다. 
+            this.setState( { r: this.state.r +  1 }); // ==> 값도 바뀌고 화면도 바뀐다.
+        }
+        render() {
+            return (
+                <div>
+                    <input type="text"/>
+                    <button onClick={this.handler}> current state value: {this.state.r} </button>
+                </div>
+            );
+        }
+    }
+    
+    ReactDOM.render( <App></App>, document.getElementById("app") )
+
+</script>
