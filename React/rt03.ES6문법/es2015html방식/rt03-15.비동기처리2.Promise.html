@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+
+<body>
+    <xmp>
+        ES5에 도입된 Promise 방식에 대해서 학습한다.
+
+        콜백 방식으로 비동기 처리 방법을 작성하는 방법을 배우고 문제점을 확인한다.
+
+        Promise 방식으로 비동기 처리 방법을 작성하는 방법을 배우고 편리함을 확인한다.
+    </xmp>
+    
+    <xmp>
+    ES6 코드를 브라우저에서 실행하려면 babel 이 필요하다.
+
+    < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
+    < script type="text/babel">
+        // ES6 코딩 
+    </script>
+    </xmp>
+</body>
+
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
+<script type="text/babel">
+    //#############################
+    // Promise 예제1
+    //#############################
+    var p = new Promise( function(resolve, reject) {
+
+        console.log("20까지의 난수 중 홀수/짝수?");
+        console.log("결과는 2초후에 나옵니다.");
+
+        setTimeout( function() {
+            var randNum = Math.random() *20;
+            var num = Math.round( randNum );
+            var isValid  =  num % 2;
+            if( isValid) {
+                resolve(num);
+            }
+            else {
+                reject(num);
+            }
+        }, 2000);
+    })
+
+    p.then( function(num){
+        console.log(`홀수: ${num}`);
+    })
+    .catch( function(num){
+        console.log(`짝수: ${num}`);
+    });
+
+
+    //#############################
+    // Promise 예제2
+    //#############################
+    new Promise( function(resolve, reject) {
+
+    console.log("10까지의 난수 중 홀수/짝수?");
+    console.log("결과는 4초후에 나옵니다.");
+
+    setTimeout( function() {
+        var randNum = Math.random() *10;
+        var num = Math.round( randNum );
+        var isValid  =  num % 2;
+        if( isValid) {
+            resolve(num);
+        }
+        else {
+            reject(num);
+        }
+    }, 4000);
+    })
+    .then( function(num){
+    console.log(`홀수: ${num}`);
+    })
+    .catch( function(num){
+    console.log(`짝수: ${num}`);
+    });
+
+
+    //#############################
+    // Promise 예제 3
+    //#############################
+    const promise1 = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve("작업1 완료!"), 100);
+    });
+    }
+    const promise2 = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve("작업2 완료!"), 200);
+    });
+    }
+    const promise3 = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve("작업3 완료!"), 300);
+    });
+    }
+
+
+    promise1()
+    .then((msg1) => {
+        console.log("done after 100ms:" + msg1);
+        return promise2();
+    })
+    .then((msg2) => {
+        console.log("done after 200ms:" + msg2);
+        return promise3();
+    })
+    .then((msg3) => {
+        console.log(`done after 600ms:${msg3}`);
+    });
+
+</script>

@@ -4,13 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>���</title>
+    <title>상속</title>
 </head>
 
 <body>
+    
     <xmp>
+    ES6 코드를 브라우저에서 실행하려면 babel 이 필요하다.
 
+    < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
+    < script type="text/babel">
+        // ES6 코딩 
+    </script>
     </xmp>
 </body>
 
-</html>
+</html>
+
+<script>
+
+    // ES6 예제
+    class Shape {
+        static create(x, y) {
+            return new Shape(x, y);
+        }
+        name = 'Shape';
+
+        constructor(x, y) {
+            this.move(x, y);
+        }
+        move(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+        area() {
+            return 0;
+        }
+    }
+
+    var s = new Shape(0, 0);
+    var s1 = Shape.create(0, 0);
+    s.area(); // 0
+
+    class Circle extends Shape {
+        constructor(x, y, radius) {
+            super(x, y);
+            this.radius = radius;
+        }
+        area() {
+            if (this.radius === 0) return super.area();
+            return this.radius * this.radius;
+        }
+    }
+
+    var c = new Circle(0, 0, 10);
+    c.area(); // 100
+
+</script>

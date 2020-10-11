@@ -6,6 +6,75 @@
     <title>Document</title>
 </head>
 <body>
+    
+    <xmp>
+    ES6 코드를 브라우저에서 실행하려면 babel 이 필요하다.
+
+    < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
+    < script type="text/babel">
+        // ES6 코딩 
+    </script>
+    </xmp>
 
 </body>
-</html>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
+<script type="text/babel">
+    // ES5 문법
+    var string1 = '안녕하세요';
+    var string2 = '반갑습니다';
+    var greeting = string1 + ' ' + string2;
+    var product = { name: '도서', price: '4200원' };
+    var message = '제품' + product.name + '의 가격은' + product.price + '입니다';
+    var multiLine = '문자열1\n문자열2';
+    var value1 = 1;
+    var value2 = 2;
+    var boolValue = false;
+    var operator1 = '곱셈값은 ' + value1 * value2 + '입니다. ';
+    var operator2 = '불리언값은 ' + (boolValue ? '참' : '거짓') + '입니다. ';
+
+    //ES6 문법
+    var string1 = '안녕하세요';
+    var string2 = '반갑습니다';
+    var greeting = `${string1} ${string2}`;
+    var product = { name: '도서', price: '4200원' };
+    var message = `제품 ${product.name}의 가격은 ${product.price}입니다`;
+    var multiLine = `문자열1
+    문자열2`;
+    var value1 = 1;
+    var value2 = 2;
+    var boolValue = false;
+    var operator1 = `곱셈값은 ${value1 * value2}입니다.`;
+    var operator2 = `불리언값은 ${boolValue ? '참' : '거짓'}입니다.`;
+
+
+    var student = {
+        name: 'John Kagga',
+        city: 'Kampala'
+    };
+
+    // ES5
+    var message = 'Hello ' + student.name + ' from ' + student.city;
+    console.log(message); // Hello John Kagga from Kampala
+
+    // ES6
+    let message = `Hello ${student.name} from ${student.city}`;
+    console.log(message); // Hello John Kagga from Kampala
+
+    var d1 = new Data();
+    var name = "홍길동";
+    var r1 = `${name} 님에게 ${d1.toDateString()} 에 연락했다.`;
+    console.log(r1);
+
+    var d1 = new Date();
+    var name = "홍길동";
+    var r1 = `${name} 님에게 ${d1.toDateString() }에 연락했다.`;
+    console.log(r1);
+
+    var product = "갤럭시S7";
+    var price = 199000;
+    var str = `${product}의 가격은
+        ${price}원 입니다.`;
+    console.log(str);
+</script>

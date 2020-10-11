@@ -8,6 +8,27 @@
 </head>
 
 <body>
+    
+    <xmp>
+    ES6 코드를 브라우저에서 실행하려면 babel 이 필요하다.
+
+    < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
+    < script type="text/babel">
+        // ES6 코딩 
+    </script>
+    </xmp>
 </body>
 
-</html>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5·Î º¯È¯ */</script>
+<script type="text/babel">
+    function greet(name = 'Fellow', greeting = 'Welcome') {
+        return `${greeting} ${name}`;
+    }
+
+    console.log(greet()); // Welcome Fellow
+    console.log(greet('Elise')); // Welcome Elise
+    console.log(greet('Mike', 'Hi')); // Hi Mike
+
+</script>

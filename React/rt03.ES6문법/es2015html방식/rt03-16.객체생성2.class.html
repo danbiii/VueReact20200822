@@ -4,16 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>��ü �����</title>
+    <title>객체 만들기</title>
 </head>
 
 <body>
     <xmp>
-      ��ü ����� 3���� ���
-        �������Լ��� ��ü �����
-        create_object()�� ��ü �����
-        class ��ü �����
+      객체 만들기 3가지 방법
+        생성자함수로 객체 만들기
+        create_object()로 객체 만들기
+        class 객체 만들기
+    </xmp>
+    
+    <xmp>
+    ES6 코드를 브라우저에서 실행하려면 babel 이 필요하다.
+
+    < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
+    < script type="text/babel">
+        // ES6 코딩 
+    </script>
     </xmp>
 </body>
 
-</html>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
+<script type="text/babel">
+
+    // bind함수를 통해 this scope를 전달한 예
+    class MyClass {
+        value = 10;
+        constructor() {
+            var addThis2 = function (first, second) {
+                return this.value + first + second;
+            }.bind(this);
+            var addThis3 = (first, second) => this.value + first + second;
+        }
+    }
+
+
+    class Person {
+        constructor(name, tel, address) {
+            this.name = name;
+            this.tel = tel;
+            this.address = address;
+            if (Person.count) { Person.count++; } else { Person.count = 1; }
+        }
+        static getPersonCount() {
+            return Person.count;
+        }
+        toString() {
+            return `name=${this.name}, tel=${this.tel}, address=${this.address}`;
+        }
+    }
+
+    var p1 = new Person('이몽룡', '010-222-3332', '경기도');
+    var p2 = new Person('홍길동', '010-222-3333', '서울');
+    console.log(p1.toString());
+    console.log(Person.getPersonCount());
+
+    class Employee extends Person {
+        constructor(name, tel, address, empno, dept) {
+            super(name, tel, address);
+            this.empno = empno;
+            this.dept = dept;
+        }
+        toString() {
+            return super.toString() + `, empno=${this.empno}, dept=${this.dept}`;
+        }
+        getEmpInfo() {
+            return `${this.empno} : ${this.name}은 ${this.dept} 부서입니다.`;
+        }
+    }
+
+    let e1 = new Employee("이몽룡", "010-222-2121", "서울시", "A12311", "회계팀");
+    console.log(e1.getEmpInfo());
+    console.log(e1.toString());
+    console.log(Person.getPersonCount());
+
+</script>
