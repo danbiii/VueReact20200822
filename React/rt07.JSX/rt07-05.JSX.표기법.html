@@ -42,7 +42,6 @@
     //import ReactDOM from 'react-dom'
     
     console.log(React);
-    console.log(React.Component);
     console.log(ReactDOM);
     
     class Jsx extends React.Component {
@@ -51,7 +50,8 @@
         static propsTypes = {  /* props의 프로퍼티 타입 설정 */ } 
         state = {
             style1 : {
-                border: "2px solid red",
+                border:"2px solid red", /* border: 2px solid red; */
+                backgroundColor: "red",  /* background-color:red; */
                 backgroundColor:"red",
             }
         }
@@ -59,6 +59,7 @@
             return (
         <div className="my-div">
             <div style={this.state.style1}>
+                { /* props를 이용하여 "Hello, React" 가 출력되게 하시오. */ }
                 {this.props.mesg}
             </div>
         </div>
@@ -70,4 +71,4 @@
 
     ReactDOM.render( <Jsx mesg="Hello, React"></Jsx>, document.getElementById("app") );
 
-</script>    
+</script>

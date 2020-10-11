@@ -46,14 +46,18 @@
             counter: 0, 
             timer: null /* setInterval 핸들러 */
         }
-        tick = ()=>{            
-            this.setState({
-                counter: this.state.counter + 1
-            })
-        }
         componentDidMount() {
             // 마운트 완료 후에  : 한번만
-            let aaa =  setInterval(this.tick, 1000)// 1000ms = 1s
+            let aaa =  setInterval(
+                ()=>{
+                    this.setState({
+                        counter: this.state.counter + 1
+                    })
+                }
+                , 
+                1000 /* 1000ms = 1s */
+            );
+            
             this.setState({
                 timer: aaa
             })
@@ -61,12 +65,13 @@
         componentDidUpdate(prevProps, prevState) {
             console.log("componentDidUpdate");
             // 업데이트 완료 후에 : 여러번, state 가 변경될 때마다
+            if( this.state.counter >= 10 ) {
+                // timer 중지
+                window.clearInterval(this.state.timer);
+            }
         }
         componentWillUnmount() {
             // 언마운트 완료 후에 : 페이지 unload 될 때 한번. 
-        }
-        handler = (e)=>{
-            // 이벤트 핸들러를 화살표 함수로 만들면 constructor(생성자)에서 this를 bind() 생략해도 된다
         }
         render() {
             return (

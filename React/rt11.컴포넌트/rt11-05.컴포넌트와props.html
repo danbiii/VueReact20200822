@@ -25,12 +25,13 @@
 
 
         <div>
-            Hello, react world!!! {this.props.num} - component
+            Hello, react world!!! {this.props.index} - component
         </div>
     </xmp>
     <hr>
 
     <div id="app">
+        요기에 
     </div>
 </body>
 
@@ -52,26 +53,22 @@
         render() {
             return (
                 <div>
-                    Hello, react world!!! {this.props.num} - component
+                    Hello, react world!!! {this.props.index} - component
                 </div>
             );
         }
     }
+
     ReactDOM.render(
         <div>
-            <HelloWorld num={1}></HelloWorld>
-            <HelloWorld num={2}></HelloWorld>
-            <HelloWorld num={3}></HelloWorld>
-            <HelloWorld num={4}></HelloWorld>
-            <HelloWorld num={5}></HelloWorld>
+            <HelloWorld index={1}></HelloWorld>
+            <HelloWorld index={2}></HelloWorld>
+            <HelloWorld index={3}></HelloWorld>
+            <HelloWorld index={4}></HelloWorld>
+            <HelloWorld index={5}></HelloWorld>
         </div>
         , 
         document.getElementById("app")
     )
 
-
 </script>
-
-
-
-

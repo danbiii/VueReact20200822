@@ -88,7 +88,9 @@
             /*
             return (
                 <h1 id="greeting">
-                    Hello, React!!!
+                    <p>
+                        Test!!!
+                    </p>
                 </h1>
             );*/
             return React.createElement(
@@ -105,17 +107,5 @@
     
     //export default Greeting;
 
-    ReactDOM.render( 
-        React.createElement(
-            "h1", /* 태그명 */
-            {id:"greeting"}, /* 태그 속성들 */
-            React.createElement(
-                "p", /*  태그명 */
-                {}, /*태그 속성들 */
-                "Test!!!"
-            )
-        )
-        , 
-        document.getElementById("wrap1")
-    );
+    ReactDOM.render( <Greeting></Greeting> , document.getElementById("wrap1") );
 </script>

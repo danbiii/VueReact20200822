@@ -16,7 +16,7 @@
         
         작업 
             1. 컴포넌트에 버튼 추가하고 click 이벤트를 설정
-                <button onClick={this.hanlder}> setState</button>
+                <button onClick={this.handler}> setState</button>
             2. click 이벤트 핸들러 작성시 주의사항. 
                 constructor에서 this를 bind 한다. 
 
@@ -64,7 +64,10 @@
             // 언마운트 완료 후에 : 페이지 unload 될 때 한번. 
             console.log("componentWillUnmount");
         }
-        handler = (e)=>{
+
+        // 이벤트 핸들러. 
+        // 이벤트 핸들러는 arrow 함수로 만든다.
+        handler = (event)=>{
             // 이벤트 핸들러를 화살표 함수로 만들면 constructor(생성자)에서 this를 bind() 생략해도 된다
             // 버튼을 클릭하면 state.r 값을 1씩 증가 시키시오. 
             // Vue에서는 this.$data 값을 바꿀때는 Vue.set() 를 사용.
@@ -75,6 +78,7 @@
             this.setState( { r: this.state.r +  1 }); // ==> 값도 바뀌고 화면도 바뀐다.
         }
         render() {
+            console.log("render");
             return (
                 <div>
                     <input type="text"/>
@@ -85,5 +89,4 @@
     }
     
     ReactDOM.render( <App></App>, document.getElementById("app") )
-
 </script>

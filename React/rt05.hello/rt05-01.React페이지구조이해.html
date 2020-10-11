@@ -77,6 +77,16 @@
         React DOM Server (include React in the page before React DOM Server)
             Dev build with warnings: react-dom/dist/react-dom-server.js
             Minified build for production: react-dom/dist/react-dom-server.min.js
+
+
+        작성  순서
+            단계1: React 객체 스크립트 플러그인 추가 or 객체 import
+            단계2. React 객체 import 여부 확인
+                console.log(React);
+                console.log(ReactDOM);
+            단계3. Component 만들기
+            단계4. Component 화면에 컴포넌트 주입
+
     </xmp>
     <hr>
 
@@ -101,6 +111,7 @@
     
     class Comp extends React.Component {
      
+        // 컴포넌트 상태(변수) 설정
         state = {
             mesg: "hi!!!!",
         }
@@ -125,7 +136,7 @@
         render() {
             return (
                 <div onClick={this.handler}>
-                    {this.props.name}, {this.state.mesg}
+                    Hello, {this.props.name}, {this.state.mesg}
                 </div>
             );
         }

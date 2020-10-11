@@ -17,7 +17,7 @@
         왜냐하면 Virtual DOM 이 변경된 노드를 찾기 쉽게 하기 위해서. 
         렌더링 속도를 빠르게 하기 위해서는 key 프러터티 설정이 필요
         key 프로러피티는 Unique 해야 한다. 
-        const todoList = [
+        const tolist = [
             { taskName: "빨래하기", finished: false },
             { taskName: "공부하기", finished: true },
             { taskName: "게임하기", finished: true },        
@@ -42,18 +42,18 @@
     console.log(React);
     console.log(ReactDOM);
     
-    class Todo extends React.Component {
+    class TodoList extends React.Component {
     
         render() {
-            const todoList= [
+            const tolist= [
                 { taskName: "빨래하기", finished: false },
                 { taskName: "공부하기", finished: true },
-                { taskName: "게임하기", finished: true },        
+                { taskName: "게임하기", finished: true },
             ];
             return (
                 <div>
                     {
-                        todoList.map( function(value,index){ 
+                        tolist.map( function(value,index){ 
                             return ( <div key={index}> {value.taskName} </div> ) 
                         }) 
                     }
@@ -61,5 +61,5 @@
             );
         }
     }
-    ReactDOM.render( <Todo></Todo>, document.getElementById("app") ) 
+    ReactDOM.render( <TodoList></TodoList>, document.getElementById("app") ) 
 </script>
