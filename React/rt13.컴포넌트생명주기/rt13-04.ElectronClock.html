@@ -27,8 +27,9 @@
         window.setInterval(함수, 시간) 사용 
 
     작업순서
-        1. 한번만 현재 시간이 출력되게 
-        2. 1번이 완성되면 setInterval() 기능을 추가한다. 
+        1. "rt07-13.ElectronClock" 예제에서 
+            setInterval() 부분을 컴포넌트 안으로 옮기시오. 
+            "rt13-03.TickTock" 예제 참조
         
     단계1: React 객체 스크립트 플러그인 추가 or import. 
     단계2. React 객체 import 여부 확인
@@ -65,7 +66,8 @@
         state = {
             style1 : {
                 fontSize: "80pt",
-            }
+            },
+            hms :""
         }
         z2 = (val) => {
             /* 오전인 경우 숫자앞에 0 붙이기 */
@@ -73,9 +75,19 @@
             // 004  --> 04
             // 0016 --> 16
             return str.substr(str.length-2, 2);
+        }        
+        componentDidMount() {
+            // 마운트 완료 후에  : 페이지 load 될 때 한번
+            // timer 만들기 
+            setInterval(this.tick, 1000); // 1000 ms = 1s
         }
-        render() {
-
+        componentDidUpdate(prevProps, prevState) {
+            // 업데이트 완료 후에 : 여러번, state 가 변경될 때마다
+        }
+        componentWillUnmount() {
+            // 언마운트 완료 후에 : 페이지 unload 될 때 한번
+        }
+        tick = ()=>{            
             const d = new Date();
             let h = d.getHours();
             let m = d.getMinutes();
@@ -85,17 +97,21 @@
             m = this.z2(m);
             s = this.z2(s);
 
+            this.setState({
+                hms: `${h}:${m}:${s}`
+            })
+        }
+        render() {
             return (
                 <div style={this.state.style1}>
-                    {h}:{m}:{s}
+                    {this.state.hms}
                 </div>
             );
         }
     }
 
-    setInterval( function(){
-        ReactDOM.render( <ElectronClock></ElectronClock>, document.getElementById("app") );
-    }, 1000); // 1000 ms = 1 s
+    ReactDOM.render( <ElectronClock></ElectronClock>, document.getElementById("app") );
+
     
 
 </script>
