@@ -60,7 +60,7 @@
             ReactDOM.render(
                 <div> 
                     <Letter bgcolor={"#58B3FF"}>
-                        <span>A</span>
+                        A
                     </Letter>
                     <Letter bgcolor={"#FF605F"}><span>E</span></Letter>
                     <Letter bgcolor={"#FFD52E"}><span>I</span></Letter>
@@ -101,7 +101,8 @@
     
     console.log(React);
     console.log(ReactDOM);
-    
+
+    /* Letter 컴포넌트 만들기  */
     class Letter extends React.Component {
         state = {
             style1 : {
@@ -112,7 +113,7 @@
                 fontFamily: "monospace",
                 fontSize : "32px",
                 textAlign: "center",
-            }    
+            }
         }
         render() {
             let style = { ...this.state.style1, backgroundColor: this.props.bgcolor, }
@@ -124,7 +125,6 @@
         }
     }
     
-    //export default Letter;
 
     ReactDOM.render(
         <div> 
@@ -140,7 +140,4 @@
         document.getElementById("app")
     );
 </script>
-
-
-
 

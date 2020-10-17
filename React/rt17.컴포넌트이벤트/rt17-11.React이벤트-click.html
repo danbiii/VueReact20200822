@@ -19,7 +19,7 @@
 
 <body>
     <xmp>
-        click 이벤트 핸들러 작성을 실습한다.
+        컴포넌트 생성과 click 이벤트 핸들러 작성을 실습한다.
 
         1. Greeting 컴포넌트 만들기
             ...(중략)
@@ -52,7 +52,12 @@
                 line-height: 100px;
             }
         3. div의 click 이벤트 핸들러를 작성하고 콘솔에 this 값을 출력한다.
-            console.log( this)
+            handlerClick1(event){
+                console.log(this); // bind가 안되면 this는 undefined
+            }
+            handlerClick2 = (event)=>{
+                console.log(this); // bind가 되면 this는 Greeting 컴포넌트다
+            }
             
         4. ReactDOM 을 사용하여 화면에 붙인다.
             예시)
@@ -74,5 +79,59 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">/* import { ReactDOM } from 'react-dom'; */</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* JSX를 자바스크립트로 변환 */</script>
 <script type="text/babel">
+    //import React, { Component } from 'react';
+    //import ReactDOM from 'react-dom'
+    
+    console.log(React);
+    console.log(ReactDOM);
+    
+    class Greeting extends React.Component {
+    
+        constructor(props) {
+            super(props);
+            // this 바인딩
+            this.handlerClick1 = this.handlerClick1.bind(this);
+        }
+        handlerClick1() {// function 함수
+            
+            console.log(this);//
+        }
+        handlerClick2 = (event)=>{ // 화살표 함수
+            // 이벤트 핸들러는 화살표 함수로 만들면 this를 bind() 생략해도 된다
+            console.log(this);//
+        }
+        render() {
+            let style1 = {
+                width: "100px",
+                height: "100px",
+                background: "gray",
+                verticalAlign: "center",
+                lineHeight: "100px",
+            }
+            let style2 = {
+                width: "100px",
+                height: "100px",
+                background: "yellow",
+                verticalAlign: "center",
+                lineHeight: "100px",
+            }
+            return (
+                <div>
+                    <div style={style1} onClick={this.handlerClick1}>
+                        div1
+                    </div>
+                    <div style={style2} onClick={this.handlerClick2}>
+                        div2
+                    </div>                    
+                </div>
+            );
+        }
+    }
+    
+    ReactDOM.render( 
+        <Greeting></Greeting>
+        , 
+        document.getElementById("app") 
+    ) 
 
 </script>    
